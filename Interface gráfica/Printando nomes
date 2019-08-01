@@ -1,0 +1,77 @@
+	public class ??? extends JFrame {
+  
+  private JPanel contentPane;
+	private JTextField textnome;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Treino1 frame = new Treino1();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Treino1() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 254, 248);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\WIN\\Desktop\\luffy.png"));
+		lblNewLabel.setBounds(0, 0, 100, 100);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Diga-me seu nome!");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(49, 111, 138, 20);
+		contentPane.add(lblNewLabel_1);
+		
+		textnome = new JTextField();
+		textnome.setBounds(49, 137, 138, 20);
+		contentPane.add(textnome);
+		textnome.setColumns(10);
+		
+		JRadioButton rdbtnmodificar = new JRadioButton("Modificar texto");
+		rdbtnmodificar.setBounds(103, 57, 129, 23);
+		contentPane.add(rdbtnmodificar);
+		
+		JButton btnclique = new JButton("Clique");
+		btnclique.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnclique.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				// Após a verificação emite duas mensagens de tipo diferente no painel
+				if(rdbtnmodificar.isSelected()) {
+					
+					JOptionPane.showMessageDialog(null, "Você clicou no botão, seja bem-vindo: "+ textnome.getText());
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Você não clicou no botão, seja bem-vindo: "+ textnome.getText());
+				}
+			}
+		});
+		btnclique.setBounds(72, 175, 89, 23);
+		contentPane.add(btnclique);
+		
+		JLabel lblNewLabel_2 = new JLabel("Eduardo Jos\u00E9");
+		lblNewLabel_2.setBounds(110, 11, 118, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel label = new JLabel("31/07/19");
+		label.setBounds(110, 24, 77, 14);
+		contentPane.add(label);
+    }
