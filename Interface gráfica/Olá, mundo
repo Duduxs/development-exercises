@@ -1,0 +1,71 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JScrollBar;
+import javax.swing.SwingConstants;
+
+
+// Criando aplicativo que mostra " Olá, mundo! " na tela em interface gráfica
+
+public class TelaOlaMundo extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TelaOlaMundo frame = new TelaOlaMundo();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public TelaOlaMundo() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 347, 257);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lbltexto = new JLabel("Sua mensagem");
+		lbltexto.setForeground(Color.GRAY);
+		lbltexto.setBounds(51, 0, 253, 43);
+		lbltexto.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		contentPane.add(lbltexto);
+		
+		JButton btnbotao = new JButton("Mostrar");
+		btnbotao.setBounds(5, 117, 321, 63);
+		
+		btnbotao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				lbltexto.setText("Olá, mundo!");
+			}
+		});
+		contentPane.add(btnbotao);
+	}
+}
