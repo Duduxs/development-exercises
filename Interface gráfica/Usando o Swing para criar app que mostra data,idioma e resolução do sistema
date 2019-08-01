@@ -1,0 +1,108 @@
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import java.awt.event.ActionEvent;
+
+
+
+public class RelogioIdiomaResolucaoSwing extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					RelogioIdiomaResolucaoSwing frame = new RelogioIdiomaResolucaoSwing();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public RelogioIdiomaResolucaoSwing() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 628, 239);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(10, 31, 100, 100);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\WIN\\Desktop\\luffy.png"));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lbltexto = new JLabel("Data e Hora Atuais");
+		lbltexto.setBounds(120, 55, 108, 14);
+		contentPane.add(lbltexto);
+		
+	
+		
+		// Funções da lbldataehora/lblidioma/lblresolucao
+		JLabel lbldataehora = new JLabel(" ");
+		lbldataehora.setBounds(112, 90, 179, 14);
+		contentPane.add(lbldataehora);
+		
+		JLabel lbltexto2 = new JLabel("Idioma do sistema");
+		lbltexto2.setBounds(318, 55, 108, 14);
+		contentPane.add(lbltexto2);
+		
+		JLabel lblidioma = new JLabel("");
+		lblidioma.setBounds(346, 90, 100, 14);
+		contentPane.add(lblidioma);
+		
+		JLabel lbltexto3 = new JLabel("Resolu\u00E7\u00E3o da tela");
+		lbltexto3.setBounds(494, 55, 108, 14);
+		contentPane.add(lbltexto3);
+		
+		JLabel lblresolucao = new JLabel("");
+		lblresolucao.setBounds(504, 90, 67, 14);
+		contentPane.add(lblresolucao);
+		
+		//Cria um novo objeto da classe Date chamado d
+		Date d = new Date();
+		// Cria um novo objeto da classe Toolkit chamado tk
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		
+		// Cria um novo objeto da classe Dimension chamado di
+		Dimension di = tk.getScreenSize();
+		
+		JButton btnclique = new JButton("Clique no bot\u00E3o");
+		btnclique.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				lblresolucao.setText(di.width+"x"+di.height);
+				lbldataehora.setText(d.toString());
+				lblidioma.setText(System.getProperty("user.language"));
+				
+			}
+		});
+		btnclique.setBounds(246, 159, 139, 30);
+		contentPane.add(btnclique);
+		
+
+		
+	}
+
+}
