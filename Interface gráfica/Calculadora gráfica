@@ -1,0 +1,241 @@
+//  only awt/swing and packages 
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+
+/**
+ * 
+ * @author Eduardo José
+ * @version 1.0.0
+ * @category util
+ *
+ */
+
+
+// Extends gráfico + encapsulamento
+public class Calculadora extends JFrame {
+
+	private JPanel contentPane;
+	private JTextPane text2;
+	private JLabel lblresultado;
+	private JTextPane text3;
+	private JTextPane text4;
+	private JLabel lblsubtracao;
+	private JButton btnequals2;
+	private JLabel lblresultado2;
+	private JTextPane text5;
+	private JTextPane text6;
+	private JButton btnequals3;
+	private JLabel lblresultado3;
+	private JLabel lblmultiplicacao;
+	private JTextPane text7;
+	private JTextPane text8;
+	private JButton btnequals4;
+	private JLabel lblresultado4;
+	private JLabel lbldivisao;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel label_6;
+	private JLabel lblCalculadora;
+
+	/**
+	 * Launch the application.
+	 */
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Calculadora frame = new Calculadora();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	
+	// Entrada de dados e setando confi do painel
+	public Calculadora() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 332);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JTextPane text1 = new JTextPane();
+		text1.setBounds(40, 81, 85, 20);
+		contentPane.add(text1);
+		
+		text2 = new JTextPane();
+		text2.setBounds(163, 81, 85, 20);
+		contentPane.add(text2);
+		
+		JLabel lblsoma = new JLabel("+");
+		lblsoma.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		lblsoma.setBounds(135, 79, 22, 20);
+		contentPane.add(lblsoma);
+		
+		lblresultado = new JLabel("");
+		lblresultado.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblresultado.setBounds(342, 81, 82, 20);
+		contentPane.add(lblresultado);
+		
+		lblresultado2 = new JLabel("");
+		lblresultado2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblresultado2.setBounds(342, 141, 82, 20);
+		contentPane.add(lblresultado2);
+		
+		text5 = new JTextPane();
+		text5.setBounds(40, 201, 85, 20);
+		contentPane.add(text5);
+		
+		text6 = new JTextPane();
+		text6.setBounds(163, 201, 85, 20);
+		contentPane.add(text6);
+		
+		lblresultado3 = new JLabel("");
+		lblresultado3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblresultado3.setBounds(342, 201, 82, 20);
+		contentPane.add(lblresultado3);
+		
+		lblmultiplicacao = new JLabel("*");
+		lblmultiplicacao.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		lblmultiplicacao.setBounds(137, 201, 22, 20);
+		contentPane.add(lblmultiplicacao);
+		
+		text7 = new JTextPane();
+		text7.setBounds(40, 262, 85, 20);
+		contentPane.add(text7);
+		
+		text8 = new JTextPane();
+		text8.setBounds(163, 262, 85, 20);
+		contentPane.add(text8);
+		
+		lblresultado4 = new JLabel("");
+		lblresultado4.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblresultado4.setBounds(342, 262, 82, 20);
+		contentPane.add(lblresultado4);
+		
+		lbldivisao = new JLabel("/");
+		lbldivisao.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		lbldivisao.setBounds(139, 262, 22, 20);
+		contentPane.add(lbldivisao);
+		
+		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\WIN\\Desktop\\EDU\\luffy.png"));
+		lblNewLabel.setBounds(0, 0, 98, 74);
+		contentPane.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("@Eduardo Jos\u00E9");
+		lblNewLabel_1.setBounds(133, 11, 98, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		label_6 = new JLabel("@01/08/19");
+		label_6.setBounds(135, 30, 98, 14);
+		contentPane.add(label_6);
+		
+		lblCalculadora = new JLabel("Calculadora");
+		lblCalculadora.setFont(new Font("Harrington", Font.PLAIN, 30));
+		lblCalculadora.setBounds(241, 11, 183, 33);
+		contentPane.add(lblCalculadora);
+		// Saída dos dados e posição no layout
+		
+		// SOMA 
+		JButton btnequals = new JButton("=");
+		btnequals.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int n1 = Integer.parseInt(text1.getText());
+				int n2 = Integer.parseInt(text2.getText());
+				int s = n1+n2;
+		     
+		 lblresultado.setText(Integer.toString(s));	
+				
+			}
+		});
+		btnequals.setBounds(258, 81, 62, 20);
+		contentPane.add(btnequals);
+		
+		text3 = new JTextPane();
+		text3.setBounds(40, 141, 85, 20);
+		contentPane.add(text3);
+		
+		text4 = new JTextPane();
+		text4.setBounds(163, 141, 85, 20);
+		contentPane.add(text4);
+		
+		lblsubtracao = new JLabel("-");
+		lblsubtracao.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		lblsubtracao.setBounds(139, 141, 22, 20);
+		contentPane.add(lblsubtracao);
+		
+		// SUBTRAÇÃO
+		btnequals2 = new JButton("=");
+		btnequals2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int n1 = Integer.parseInt(text3.getText());
+				int n2 = Integer.parseInt(text4.getText());
+				int s = n1-n2;
+				
+				 lblresultado2.setText(Integer.toString(s));	
+				
+				
+			}
+		});
+		btnequals2.setBounds(258, 141, 62, 20);
+		contentPane.add(btnequals2);
+		
+		// MULTIPLICAÇÃO
+		btnequals3 = new JButton("=");
+		btnequals3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int n1 = Integer.parseInt(text5.getText());
+				int n2 = Integer.parseInt(text6.getText());
+				int s = n1*n2;
+				
+				 lblresultado3.setText(Integer.toString(s));
+				
+				
+				
+			}
+		});
+		btnequals3.setBounds(258, 201, 62, 20);
+		contentPane.add(btnequals3);
+		
+		// DIVISÃO
+		btnequals4 = new JButton("=");
+		btnequals4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int n1 = Integer.parseInt(text7.getText());
+				int n2 = Integer.parseInt(text8.getText());
+				int s = n1/n2;
+				
+				 lblresultado4.setText(Integer.toString(s));
+				
+			}
+		});
+		btnequals4.setBounds(258, 262, 62, 20);
+		contentPane.add(btnequals4);
+		
+	
+	}
+}
