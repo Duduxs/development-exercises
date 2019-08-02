@@ -1,0 +1,123 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import java.awt.Font;
+import javax.swing.JSpinner;
+import javax.swing.JScrollBar;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.awt.event.ActionEvent;
+
+public class CalculadoraDeAno extends JFrame {
+
+	/**
+	 * @author EDUARDO JOSÉ
+	 * @since 01/08/19
+	 * @version 1.0.0
+	 * 
+	 */
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					CalculadoraDeAno frame = new CalculadoraDeAno();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public CalculadoraDeAno() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Ano atual :");
+		lblNewLabel.setBounds(5, 11, 113, 26);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblano = new JLabel("");
+		lblano.setForeground(Color.RED);
+		lblano.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblano.setBounds(120, 13, 186, 26);
+		contentPane.add(lblano);
+		
+		JSpinner spndata = new JSpinner();
+		spndata.setModel(new SpinnerNumberModel(1900, 1900, 2019, 1));
+		spndata.setBounds(209, 67, 55, 20);
+		contentPane.add(spndata);
+		
+		JLabel lblNewLabel_1 = new JLabel("Data de nascimento");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblNewLabel_1.setBounds(5, 65, 205, 20);
+		contentPane.add(lblNewLabel_1);
+		
+		
+		JLabel lblNewLabel_2 = new JLabel("Idade:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblNewLabel_2.setBounds(263, 178, 75, 26);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblidade = new JLabel("");
+		lblidade.setForeground(Color.RED);
+		lblidade.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblidade.setBounds(349, 178, 75, 26);
+		contentPane.add(lblidade);
+		
+		JLabel lblNewLabel_3 = new JLabel("@Eduardo ");
+		lblNewLabel_3.setBounds(349, 21, 75, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel label = new JLabel("@01/08/19");
+		label.setBounds(349, 38, 75, 14);
+		contentPane.add(label);
+		
+	// Para pegar o ano ainda está com erro
+		lblano.setText(Integer.toString(Calendar.YEAR));
+		
+		JButton btncalcular = new JButton("Calcular");
+		btncalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			
+				int dat = Integer.parseInt((spndata.getValue().toString()));
+				int ano = 2019 - dat;
+				
+				lblidade.setText(Integer.toString(ano));
+				
+			}
+		});
+		btncalcular.setIcon(new ImageIcon("C:\\Users\\WIN\\Desktop\\EDU\\luffy.png"));
+		btncalcular.setBounds(13, 135, 220, 100);
+		contentPane.add(btncalcular);
+	
+	}
+}
