@@ -1,0 +1,146 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JSpinner;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class CalculadoraMath extends JFrame {
+
+	private JPanel contentPane;
+
+/**
+* @author Eduardo José
+*  @since 02/08/19
+*/
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					CalculadoraMath frame = new CalculadoraMath();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public CalculadoraMath() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 248, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Informe um valor: ");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(10, 63, 156, 14);
+		contentPane.add(lblNewLabel);
+		
+		JSpinner spnvalor = new JSpinner();
+		spnvalor.setBounds(176, 63, 50, 20);
+		contentPane.add(spnvalor);
+		
+		JLabel lblNewLabel_1 = new JLabel("@Eduardo");
+		lblNewLabel_1.setBounds(10, 11, 83, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel label = new JLabel("@02/08/19");
+		label.setBounds(10, 25, 72, 27);
+		contentPane.add(label);
+		
+		JLabel lblRestoDaDiviso = new JLabel("Resto da divis\u00E3o por 2");
+		lblRestoDaDiviso.setEnabled(false);
+		lblRestoDaDiviso.setBounds(10, 103, 156, 14);
+		contentPane.add(lblRestoDaDiviso);
+		
+		JLabel lblElevadoAoCubo = new JLabel("Elevado ao Cubo");
+		lblElevadoAoCubo.setEnabled(false);
+		lblElevadoAoCubo.setBounds(10, 128, 156, 14);
+		contentPane.add(lblElevadoAoCubo);
+		
+		JLabel lblRaizQuadrada = new JLabel("Raiz quadrada");
+		lblRaizQuadrada.setEnabled(false);
+		lblRaizQuadrada.setBounds(10, 153, 156, 14);
+		contentPane.add(lblRaizQuadrada);
+		
+		JLabel lblRaizCbica = new JLabel("Raiz c\u00FAbica");
+		lblRaizCbica.setEnabled(false);
+		lblRaizCbica.setBounds(10, 178, 156, 14);
+		contentPane.add(lblRaizCbica);
+		
+		JLabel lblValorAbsoluto = new JLabel("Valor Absoluto");
+		lblValorAbsoluto.setEnabled(false);
+		lblValorAbsoluto.setBounds(10, 203, 156, 14);
+		contentPane.add(lblValorAbsoluto);
+		
+		JLabel lblExponenciao = new JLabel("Exponencia\u00E7\u00E3o");
+		lblExponenciao.setEnabled(false);
+		lblExponenciao.setBounds(10, 228, 156, 14);
+		contentPane.add(lblExponenciao);
+		
+		JLabel lblresto = new JLabel("");
+		lblresto.setEnabled(false);
+		lblresto.setBounds(176, 103, 56, 14);
+		contentPane.add(lblresto);
+		
+		JLabel lblcubo = new JLabel("");
+		lblcubo.setEnabled(false);
+		lblcubo.setBounds(176, 128, 56, 14);
+		contentPane.add(lblcubo);
+		
+		JLabel lblrquadrada = new JLabel("");
+		lblrquadrada.setEnabled(false);
+		lblrquadrada.setBounds(176, 153, 56, 14);
+		contentPane.add(lblrquadrada);
+		
+		JLabel lblrcubica = new JLabel("");
+		lblrcubica.setEnabled(false);
+		lblrcubica.setBounds(176, 178, 56, 14);
+		contentPane.add(lblrcubica);
+		
+		JLabel lblva = new JLabel("");
+		lblva.setEnabled(false);
+		lblva.setBounds(176, 203, 56, 14);
+		contentPane.add(lblva);
+		
+		JLabel lblex = new JLabel("");
+		lblex.setEnabled(false);
+		lblex.setBounds(176, 228, 56, 14);
+		contentPane.add(lblex);
+		
+		JButton btncalcular = new JButton("Calcular");
+		btncalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				float valor = Float.parseFloat(spnvalor.getValue().toString());
+				
+				lblresto.setText(Float.toString(valor%2));
+				lblcubo.setText(Double.toString(Math.pow(valor, 3)));
+				lblrquadrada.setText(Double.toString(Math.sqrt(valor)));
+				lblrcubica.setText(Double.toString(Math.cbrt(valor)));
+				lblva.setText(Double.toString(Math.abs(valor)));
+				lblex.setText(Double.toString(Math.pow(valor, 2)));
+				
+			}
+		});
+		btncalcular.setBounds(89, 17, 133, 35);
+		contentPane.add(btncalcular);
+		
+		
+	}
+}
