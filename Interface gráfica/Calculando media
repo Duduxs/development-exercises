@@ -1,0 +1,130 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.GridBagLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Media extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtn1;
+	private JTextField txtn2;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Media frame = new Media();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Media() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 261, 231);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Seu nome:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblNewLabel.setBounds(10, 11, 105, 27);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblnome = new JLabel("");
+		lblnome.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblnome.setBounds(125, 11, 105, 27);
+		contentPane.add(lblnome);
+		
+		JLabel lblNota = new JLabel("Nota1:");
+		lblNota.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblNota.setBounds(10, 73, 66, 27);
+		contentPane.add(lblNota);
+		
+		JLabel lblNota_1 = new JLabel("Nota2:");
+		lblNota_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblNota_1.setBounds(10, 111, 66, 27);
+		contentPane.add(lblNota_1);
+		
+		JLabel lblMedia = new JLabel("Media:");
+		lblMedia.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblMedia.setBounds(10, 160, 66, 27);
+		contentPane.add(lblMedia);
+		
+		txtn1 = new JTextField();
+		txtn1.setBounds(86, 81, 43, 20);
+		contentPane.add(txtn1);
+		txtn1.setColumns(10);
+		
+		txtn2 = new JTextField();
+		txtn2.setColumns(10);
+		txtn2.setBounds(86, 119, 43, 20);
+		contentPane.add(txtn2);
+		
+		JLabel lblNewLabel_1 = new JLabel("@Eduardo");
+		lblNewLabel_1.setBounds(184, 59, 61, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel label_1 = new JLabel("@02/08/19");
+		label_1.setBounds(184, 73, 61, 14);
+		contentPane.add(label_1);
+		
+		JLabel lblmedia = new JLabel("");
+		lblmedia.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblmedia.setBounds(80, 160, 105, 27);
+		contentPane.add(lblmedia);
+		
+		// Metodo de entrada e setando o texto para a variavel nome
+		String nome = JOptionPane.showInputDialog("Diga-me seu nome: ");
+		lblnome.setText(nome);
+		
+		JButton btncalcular = new JButton("Calcular");
+		btncalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				float n1 = Float.parseFloat(txtn1.getText().toString());
+				float n2 = Float.parseFloat(txtn2.getText().toString());
+				float media = (n1+n2)/2;
+				
+			  lblmedia.setText(Float.toString(media));
+			  
+			  
+			  if(media >= 7) {
+				  
+				  JOptionPane.showMessageDialog(null, nome+" Você tirou "+media+" APROVADO!");
+			  }
+			  
+			  else {
+				  JOptionPane.showMessageDialog(null, nome+" Você tirou "+media+" REPROVADO!");
+			  }
+				
+			}
+		});
+		btncalcular.setBounds(156, 98, 89, 23);
+		contentPane.add(btncalcular);
+		
+	
+	}
+}
