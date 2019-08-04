@@ -1,0 +1,102 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class VerificadorIdadeSwing extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtano;
+
+	/**
+	 * @author EDUARDO JOSÉ
+	 * @version 2.0
+	 * @Since 04/08/19
+	 */
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VerificadorIdadeSwing frame = new VerificadorIdadeSwing();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public VerificadorIdadeSwing() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 221, 214);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Ano de nascimento");
+		lblNewLabel.setBounds(10, 41, 117, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Idade");
+		lblNewLabel_1.setBounds(10, 107, 64, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblSituao = new JLabel("Situa\u00E7\u00E3o");
+		lblSituao.setBounds(10, 132, 64, 14);
+		contentPane.add(lblSituao);
+		
+		txtano = new JTextField();
+		txtano.setBounds(137, 38, 58, 20);
+		contentPane.add(txtano);
+		txtano.setColumns(10);
+		
+		JLabel lblidade = new JLabel("");
+		lblidade.setBounds(125, 107, 70, 14);
+		contentPane.add(lblidade);
+		
+		JLabel lblsituacao = new JLabel("");
+		lblsituacao.setBounds(84, 132, 121, 14);
+		contentPane.add(lblsituacao);
+		
+		JButton btncalcular = new JButton("Calcular idade");
+		btncalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				int ano = Integer.parseInt(txtano.getText());
+				int idade = 2019 - ano;
+				lblidade.setText(Integer.toString(idade));
+				
+				String situacao = (idade > 18)?"Maior de idade":"Menor de idade";
+				lblsituacao.setText(situacao);
+				
+			}
+		});
+		btncalcular.setBounds(44, 73, 117, 23);
+		contentPane.add(btncalcular);
+		
+		JLabel lblNewLabel_2 = new JLabel("@Eduardo");
+		lblNewLabel_2.setBounds(0, 0, 127, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel label = new JLabel("@04/08/19");
+		label.setBounds(0, 16, 127, 20);
+		contentPane.add(label);
+		
+	
+	}
+}
