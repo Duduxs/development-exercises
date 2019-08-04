@@ -1,0 +1,106 @@
+import java.awt.BorderLayout;
+import java.lang.Math;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import javax.swing.JSpinner;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SpinnerNumberModel;
+
+public class JogoAdivinhe extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * @author EDUARDO JOSÉ
+	 * @version 1.0.0
+	 * @since 04/08/19
+	 */
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JogoAdivinhe frame = new JogoAdivinhe();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public JogoAdivinhe() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 409, 287);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lbltxt = new JLabel("Estou pensando em um n\u00FAmero entre 1 e 5 Tente adivinhar que valor \u00E9 esse. ");
+		lbltxt.setHorizontalAlignment(SwingConstants.LEFT);
+		lbltxt.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lbltxt.setToolTipText("");
+		lbltxt.setVerticalAlignment(SwingConstants.TOP);
+		lbltxt.setBounds(10, 35, 380, 47);
+		contentPane.add(lbltxt);
+		
+		JSpinner spnvalor = new JSpinner();
+		spnvalor.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		spnvalor.setBounds(213, 104, 53, 20);
+		contentPane.add(spnvalor);
+		
+		JLabel lblNewLabel_1 = new JLabel("Valor");
+		lblNewLabel_1.setBounds(181, 107, 46, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		lbltxt.setText("Tente acertar um n\u00FAmero de 1 a 5 ");
+		
+		JButton btnpalpite = new JButton("Palpite");
+		btnpalpite.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int valor = Integer.parseInt(spnvalor.getValue().toString());
+				int sorteio = (int) (1 + Math.random() * (6-1));
+		
+	       String f1 = "Você acertou";
+	       String f2 = "Você errou, número: "+valor;
+				
+	       
+			       String ternario = (valor == sorteio)?f1:f2;
+			      
+			      lbltxt.setText(ternario);
+				
+			}
+			
+		});
+		
+		btnpalpite.setBounds(96, 151, 232, 86);
+		contentPane.add(btnpalpite);
+		
+		JLabel lblNewLabel = new JLabel("@Eduardo Jos\u00E9");
+		lblNewLabel.setBounds(10, 107, 123, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel label = new JLabel("@04/08/19");
+		label.setBounds(10, 126, 123, 14);
+		contentPane.add(label);
+		
+	
+		
+	
+	}
+}
