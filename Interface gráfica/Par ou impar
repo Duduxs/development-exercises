@@ -67,7 +67,7 @@ public class Programaparimpar extends JFrame {
 		lblSeuNmero.setBounds(10, 122, 86, 14);
 		contentPane.add(lblSeuNmero);
 		
-		JLabel lblresultado = new JLabel("Seu n\u00FAmero \u00E9:");
+		JLabel lblresultado = new JLabel("");
 		lblresultado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblresultado.setForeground(Color.RED);
 		lblresultado.setBounds(98, 122, 86, 14);
@@ -88,15 +88,15 @@ public class Programaparimpar extends JFrame {
 				
 			}
 		});
-		btncalcular.setBounds(58, 88, 89, 23);
+		btncalcular.setBounds(73, 80, 89, 23);
 		contentPane.add(btncalcular);
 		
 		JLabel lblNewLabel_2 = new JLabel("@Eduardo");
-		lblNewLabel_2.setBounds(190, 31, 81, 14);
+		lblNewLabel_2.setBounds(190, 103, 81, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel label = new JLabel("05/08/19");
-		label.setBounds(190, 55, 81, 14);
+		label.setBounds(190, 122, 81, 14);
 		contentPane.add(label);
 	}
 }
