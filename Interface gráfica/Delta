@@ -1,0 +1,185 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JSpinner;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+
+public class Equaçãodosegundograu extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * 
+	 * @author EDUARDO JOSÉ
+	 * @version 1.0.0
+	 * @since 05/08/19
+	 */
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Equaçãodosegundograu frame = new Equaçãodosegundograu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Equaçãodosegundograu() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 277, 218);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
+		
+		
+		JLabel lblNewLabel = new JLabel("x\u00B2 +");
+		lblNewLabel.setBounds(57, 14, 29, 14);
+		contentPane.add(lblNewLabel);
+		
+	
+		
+		
+		JLabel lblX = new JLabel("x+");
+		lblX.setBounds(139, 14, 29, 14);
+		contentPane.add(lblX);
+		
+		
+		
+		JLabel label = new JLabel("= 0");
+		label.setBounds(216, 14, 29, 14);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("\u25B2 = ");
+		label_1.setBounds(67, 57, 29, 14);
+		contentPane.add(label_1);
+		
+		JLabel lblb = new JLabel("B");
+		lblb.setForeground(Color.RED);
+		lblb.setBounds(93, 57, 19, 14);
+		contentPane.add(lblb);
+		
+		JLabel label_3 = new JLabel("-4.");
+		label_3.setBounds(106, 57, 19, 14);
+		contentPane.add(label_3);
+		
+		JLabel lbla = new JLabel("A");
+		lbla.setForeground(Color.RED);
+		lbla.setBounds(126, 57, 19, 14);
+		contentPane.add(lbla);
+		
+		JLabel lblc = new JLabel("C");
+		lblc.setForeground(Color.RED);
+		lblc.setBounds(146, 57, 19, 14);
+		contentPane.add(lblc);
+		
+		JLabel label_6 = new JLabel("\u00B2");
+		label_6.setBounds(103, 41, 22, 14);
+		contentPane.add(label_6);
+		
+		JLabel label_7 = new JLabel("\u25B2 = ");
+		label_7.setBounds(10, 116, 29, 14);
+		contentPane.add(label_7);
+		
+		JLabel lblTipo = new JLabel("Tipo = ");
+		lblTipo.setBounds(0, 141, 45, 14);
+		contentPane.add(lblTipo);
+		
+		JLabel lblresultado = new JLabel("New label");
+		lblresultado.setBounds(42, 116, 83, 14);
+		contentPane.add(lblresultado);
+		
+		JLabel lbltipo = new JLabel("New label");
+		lbltipo.setBounds(42, 141, 149, 14);
+		contentPane.add(lbltipo);
+		
+		JSpinner spna = new JSpinner();
+		spna.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				
+				lbla.setText(spna.getValue().toString());
+			
+			}
+		});
+		spna.setBounds(0, 11, 47, 20);
+		contentPane.add(spna);
+		
+		JSpinner spnb = new JSpinner();
+		spnb.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				
+				lblb.setText(spnb.getValue().toString());
+				
+			}
+		});
+		spnb.setBounds(83, 11, 47, 20);
+		contentPane.add(spnb);
+		
+		JSpinner spnc = new JSpinner();
+		spnc.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				
+				lblc.setText(spnc.getValue().toString());
+		
+			}
+		});
+		spnc.setBounds(162, 11, 47, 20);
+		contentPane.add(spnc);
+	
+		
+		JButton btncalcular = new JButton("Calcular");
+		btncalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int a = Integer.parseInt(spna.getValue().toString());
+				int b = Integer.parseInt(spnb.getValue().toString());
+				int c = Integer.parseInt(spnc.getValue().toString());
+				
+				double d = Math.pow(b, 2) - 4 * a * c;
+				lblresultado.setText(String.format("%.2f", d));
+				
+				if ( d < 0 ) {
+					
+					lbltipo.setText("Naõ existem raizes reais!");
+				}
+				else {
+					lbltipo.setText("Existem raizes reais!");
+				}
+			
+				
+			}
+		});
+		btncalcular.setBounds(57, 82, 94, 23);
+		contentPane.add(btncalcular);
+		
+		JLabel lblNewLabel_1 = new JLabel("@Eduardo");
+		lblNewLabel_1.setBounds(193, 57, 68, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel label_2 = new JLabel("@05/08/19");
+		label_2.setBounds(193, 75, 68, 14);
+		contentPane.add(label_2);
+	}
+}
