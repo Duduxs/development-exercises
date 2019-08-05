@@ -1,0 +1,103 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+
+public class VotacaoSwing extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtano;
+
+	/**
+	 * @author EDUARDO JOSÉ
+	 * @version 1.0.0
+	 * @Since 05/08/19
+	 */
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VotacaoSwing frame = new VotacaoSwing();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public VotacaoSwing() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 259, 192);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel aaa = new JLabel("Ano de nascimento:");
+		aaa.setBounds(10, 11, 104, 14);
+		contentPane.add(aaa);
+		
+		txtano = new JTextField();
+		txtano.setBounds(123, 8, 86, 20);
+		contentPane.add(txtano);
+		txtano.setColumns(10);
+		
+		JLabel lblresultado = new JLabel("");
+		lblresultado.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblresultado.setHorizontalAlignment(SwingConstants.CENTER);
+		lblresultado.setForeground(Color.ORANGE);
+		lblresultado.setBounds(0, 79, 243, 30);
+		contentPane.add(lblresultado);
+		
+		JButton btnpossovotar = new JButton("Posso votar?");
+		btnpossovotar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int a = Integer.parseInt(txtano.getText());
+				int i = 2019 - a;
+				if(i< 16 ) {
+					lblresultado.setText("Não vota! Sua idade é: "+i+" anos");
+				}
+				else {
+					if (i >= 16 && i <= 18 || i > 70) {
+						lblresultado.setText("Opcional Sua idade é: "+i+ " anos");
+					}
+					else {
+						lblresultado.setText("Voto obrigatório! Sua idade é: "+i+ " anos");
+					}
+				}
+				
+			}
+		});
+		btnpossovotar.setBounds(52, 36, 113, 23);
+		contentPane.add(btnpossovotar);
+		
+		JLabel lblNewLabel = new JLabel("@Eduardo");
+		lblNewLabel.setBounds(10, 120, 139, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel label = new JLabel("@05/08/19");
+		label.setBounds(10, 141, 139, 14);
+		contentPane.add(label);
+		
+
+	}
+
+}
