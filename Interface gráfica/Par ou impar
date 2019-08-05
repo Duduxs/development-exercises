@@ -1,0 +1,102 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Programaparimpar extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtnumero;
+
+	
+	/**
+	 * @author EDUARDO JOSÉ
+	 * @Version 1.0.0
+	 * @Since 05/08/19
+	 */
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Programaparimpar frame = new Programaparimpar();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Programaparimpar() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 287, 180);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Vou dizer se o n\u00FAmero \u00E9 par ou impar");
+		lblNewLabel.setBounds(10, 11, 221, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Numero:");
+		lblNewLabel_1.setBounds(10, 55, 65, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtnumero = new JTextField();
+		txtnumero.setBounds(76, 52, 86, 20);
+		contentPane.add(txtnumero);
+		txtnumero.setColumns(10);
+		
+		JLabel lblSeuNmero = new JLabel("Seu n\u00FAmero \u00E9:");
+		lblSeuNmero.setBounds(10, 122, 86, 14);
+		contentPane.add(lblSeuNmero);
+		
+		JLabel lblresultado = new JLabel("Seu n\u00FAmero \u00E9:");
+		lblresultado.setHorizontalAlignment(SwingConstants.CENTER);
+		lblresultado.setForeground(Color.RED);
+		lblresultado.setBounds(98, 122, 86, 14);
+		contentPane.add(lblresultado);
+		
+		JButton btncalcular = new JButton("Calcular");
+		btncalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int numero = Integer.parseInt(txtnumero.getText());
+				
+				if(numero % 2 == 0) {
+					lblresultado.setText("Par");
+				}
+				else {
+					lblresultado.setText("Impar");
+				}
+				
+			}
+		});
+		btncalcular.setBounds(58, 88, 89, 23);
+		contentPane.add(btncalcular);
+		
+		JLabel lblNewLabel_2 = new JLabel("@Eduardo");
+		lblNewLabel_2.setBounds(190, 31, 81, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel label = new JLabel("05/08/19");
+		label.setBounds(190, 55, 81, 14);
+		contentPane.add(label);
+	}
+}
