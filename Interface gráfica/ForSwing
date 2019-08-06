@@ -1,0 +1,181 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JSlider;
+import javax.swing.JToggleButton;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.JList;
+import java.awt.Panel;
+import java.awt.List;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
+import javax.swing.AbstractListModel;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+
+public class ForSwing extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * @author Eduardo
+	 * @Version 1.0.0
+	 * @since 05/08/19
+	 */
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ForSwing frame = new ForSwing();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ForSwing() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("In\u00EDcio");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(0, 11, 60, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblFim = new JLabel("Fim");
+		lblFim.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblFim.setBounds(0, 59, 60, 14);
+		contentPane.add(lblFim);
+		
+		JLabel lblPasso = new JLabel("Passo");
+		lblPasso.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblPasso.setBounds(0, 103, 60, 14);
+		contentPane.add(lblPasso);
+	
+		
+		JLabel lblinicio = new JLabel("0");
+		lblinicio.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblinicio.setBounds(154, 12, 60, 14);
+		contentPane.add(lblinicio);
+		
+		JLabel lblfim = new JLabel("6");
+		lblfim.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblfim.setBounds(154, 60, 60, 14);
+		contentPane.add(lblfim);
+		
+		JLabel lblpasso = new JLabel("1");
+		lblpasso.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblpasso.setBounds(154, 104, 60, 14);
+		contentPane.add(lblpasso);
+		
+		
+		JSlider slinicio = new JSlider();
+		slinicio.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				
+				int i = slinicio.getValue();
+				lblinicio.setText(Integer.toString(i));
+				
+			}
+		});
+		slinicio.setMaximum(5);
+		slinicio.setValue(1);
+		slinicio.setBounds(42, 11, 111, 26);
+		contentPane.add(slinicio);
+		
+		JSlider slfim = new JSlider();
+		slfim.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				
+				int f = slfim.getValue();
+				lblfim.setText((Integer.toString(f)));
+			}
+		});
+		slfim.setMinimum(6);
+		slfim.setMaximum(20);
+		slfim.setValue(1);
+		slfim.setBounds(28, 59, 111, 26);
+		contentPane.add(slfim);
+		
+		JSlider slpasso = new JSlider();
+		slpasso.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				
+				int p = slpasso.getValue();
+				
+				lblpasso.setText(Integer.toString(p));
+				
+			}
+		});
+		slpasso.setValue(1);
+		slpasso.setMinimum(1);
+		slpasso.setMaximum(4);
+		slpasso.setBounds(42, 103, 111, 26);
+		contentPane.add(slpasso);
+
+		
+		JLabel lblresultado = new JLabel("");
+		lblresultado.setVerticalAlignment(SwingConstants.TOP);
+		lblresultado.setForeground(Color.RED);
+		lblresultado.setBounds(0, 205, 434, 56);
+		contentPane.add(lblresultado);
+		
+		JButton btncalcular = new JButton("Calcular");
+		btncalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+			String resultado = "";
+				
+			for(int i  = slinicio.getValue() ; i <= slfim.getValue(); i += slpasso.getValue()) {
+				
+			resultado += (i+ " ");
+			
+			}
+			
+			lblresultado.setText("\n" + resultado);
+				
+			
+		
+			}});
+		btncalcular.setBounds(37, 140, 89, 23);
+		contentPane.add(btncalcular);
+		
+		JLabel lblNewLabel_1 = new JLabel("@Eduardo");
+		lblNewLabel_1.setBounds(329, 12, 95, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel label = new JLabel("@05/08/19");
+		label.setBounds(329, 37, 95, 14);
+		contentPane.add(label);
+	
+		
+
+		}
+		
+	}
