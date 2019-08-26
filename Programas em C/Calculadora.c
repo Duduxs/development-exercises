@@ -50,7 +50,7 @@ if(valor == 8){
     break;
 }
 
-if(valor == 1){
+else if(valor == 1){
 printf("\n");
 printf("Diga-me o primeiro valor: ");
 scanf("%lf", &n1);
@@ -70,6 +70,7 @@ scanf("%lf", &n2);
 printf("\n");
 printf("%.2lf - %.2lf = { %.2lf } ", n1,n2,n1-n2);
 printf("\n");
+    
 }
 else if(valor == 3){
 printf("\n");
@@ -80,8 +81,9 @@ scanf("%lf", &n2);
 printf("\n");
 printf("%.2lf / %.2lf = { %.2lf } ", n1,n2,n1/n2);
 printf("\n");
+    
 }
-if(valor == 4){
+else if(valor == 4){
 printf("\n");
 printf("Diga-me o primeiro valor: ");
 scanf("%lf", &n1);
@@ -90,6 +92,7 @@ scanf("%lf", &n2);
 printf("\n");
 printf("%.2lf * %.2lf = { %.2lf } ", n1,n2,n1*n2);
 printf("\n");
+    
 }
 else if(valor == 5){
 printf("\n");
@@ -100,6 +103,7 @@ scanf("%lf", &n2);
 printf("\n");
 printf("%.2lf elevado %.2lf = { %.2lf } ", n1,n2,pow(n1,n2));
 printf("\n");
+    
 }
 else if(valor == 6){
 printf("\n");
@@ -108,6 +112,7 @@ scanf("%lf", &n1);
 printf("\n");
 printf("%.2lf raiz quadrada = { %.2lf } ", n1,sqrt(n1));
 printf("\n");
+    
 }
 else if(valor == 7){
 printf("\n");
@@ -116,6 +121,7 @@ scanf("%lf", &n1);
 printf("\n");
 printf("%.2lf raiz cubica = { %.2lf } ", n1,pow(n1,3));
 printf("\n");
+    
 }
 printf("\n");
 // no fim do loop após o usuário apertar alguma tecla o programa continua o loop.
@@ -125,6 +131,7 @@ system("cls");
 }
 
 while(valor !=8);
+    
 system("cls");
 printf("\n");
 printf("Obrigado por utilizar!");
