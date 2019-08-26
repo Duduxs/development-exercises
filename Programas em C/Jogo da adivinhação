@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+@Author Eduardo José
+@Since 26/08/19
+@version 1.0.0
+*/
+
+void conta(){
+// Faço a leitura do número inserido pelo usuário
+
+int numero,sorteado;
+srand(time(NULL));
+sorteado = rand()%10;
+printf("Diga o numero: ");
+scanf("%i", &numero);
+
+// Se o número for igual ao sorteado o usuário irá ganhar, senão ele irá perder e o programa voltará a executar.
+
+if(numero == sorteado){
+printf("\n");
+printf("ACERTOU!, O numero e: %i", sorteado);
+printf("\n");
+printf("\a");
+system("pause");
+system("cls");
+main();
+
+}
+
+else{
+printf("\n");
+printf("Errou, O numero e: %i", sorteado);
+printf("\n");
+system("pause");
+system("cls");
+main();
+
+}
+}
+
+void menu(){
+printf("-------------------------------------------\n");
+printf("Gerador de numeros aleatorios entre 0 e 10!\n");
+printf("-------------------------------------------\n");
+}
+int main(){
+
+menu();
+conta();
+
+
+return 0;
+}
