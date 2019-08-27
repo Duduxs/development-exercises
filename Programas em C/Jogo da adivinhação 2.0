@@ -396,7 +396,7 @@ if(chances == 3){
 }
 
 printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n");
-printf("Você acertou, Parabéns!\n");
+printf("Você acertou, Parabéns!!\n");
 printf("\nCom um total de [%i] chances você adivinhou o número = [%i]\n", chances+1, numerosorteado); // Chances +1 serve para quando minha execução terminar ele adicione +1
 printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n");
 system("pause");
