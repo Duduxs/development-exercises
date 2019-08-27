@@ -1,0 +1,417 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <conio.h>
+#include <locale.h>
+
+// Variáveis globais
+int audio = 1; // Controla o áudio do jogo 1 - com aúdio , 2 - sem aúdio
+int cor; // Controla a cor do jogo!
+int escolher; // Escolhe as opções do menu principal
+int numerosorteado,numerodousuario,chances = 3; // Numero que a máquina irá sortear, meu número e o número de chances.
+int usou1,usou2,usou3,usou4,usou5,usou6,usou7,usou8,usou9,usou10; // Essas 10 variáveis são para os 10 cases, isso irá fazer com que o usuário não digite o mesmo dado!
+char numeros[] = {'1','2','3','4','5','6','7','8','9','x','x','x','x','x','x','x','x','x'}; // Retângulo gráfica na tela onde fica armazenado os números que já usei ou não
+
+/**
+@author Eduardo José
+@Since 27/08/19
+@Version 2.0.0
+*/
+
+void Somdateladojogo(){
+
+// Convertendo as notas vocais do tetris para códigos
+if(audio == 1){
+Beep(659.25511,406.250);
+Beep(493.8833,203.125);
+Beep(523.25113,203.125);
+Beep(587.32954,406.250);
+Beep(523.25113,203.125);
+Beep(493.8833,203.125);
+Beep(440.0,203.125);
+Beep(440.0,203.125);
+Beep(523.25113,406.250);
+Beep(659.25511,203.125);
+Beep(587.32954,203.125);
+Beep(523.25113,203.125);
+Beep(493.8833,609.375);
+Beep(523.25113,406.250);
+Beep(440.0,406.250);
+Beep(440.0,406.250);
+}
+}
+// Reproduz um som ao escolher uma ação
+void somaoescolher(){
+
+if(audio == 1){
+Beep(150,150);
+Beep(150,150);
+}
+}
+// Tela de instruções do jogo
+void instrucoes(){
+
+printf("----------------------------------------------------------\n");
+printf("¦\t\t|@Author Eduardo José|                   ¦\n");
+printf("¦\t\t|@Version 2.0.0      |                   ¦\n");
+printf("¦\t\t|@Since 27/08/19     |                   ¦\n");
+printf("----------------------------------------------------------\n\n\n\n");
+printf("         -----------------------------------------------------------------------------------------------\n");
+printf("\t 1 - Você terá que adivinhar um número de 1 a 9 que será sorteado aleatóriamente pela máquina.\n");
+printf("\t 2 - Você não poderá repetir os números que já escolheu.\n");
+printf("\t 3 - Você terá 3 chances para tentar adivinhar o número!\n");
+printf("         -----------------------------------------------------------------------------------------------\n\n\n");
+
+system("pause");
+system("cls");
+
+if(audio == 1){
+somaoescolher();
+}
+menuprincipal();
+}
+// Menu de opções
+void opcoes(){
+
+int escolha;
+
+printf("----------------------------------------------------------\n");
+printf("¦\t\t|@Author Eduardo José|                   ¦\n");
+printf("¦\t\t|@Version 2.0.0      |                   ¦\n");
+printf("¦\t\t|@Since 27/08/19     |                   ¦\n");
+printf("----------------------------------------------------------\n\n");
+printf("\t\t» OPÇÕES! «\n\n");
+printf("\t\t ----------------\n");
+printf("\t\t¦1 - Aúdio       ¦\n");
+printf("\t\t¦2 - Cores       ¦\n");
+printf("\t\t --------------- \n\n");
+
+printf("Deseja mutar o aúdio do jogo? 1 ( NÃO ) 2 ( SIM ) : ");
+scanf("%i", &audio);
+// Se o valor não for 1 ou 2 irá resetar a tela
+if(audio >= 3 || audio <= 0){
+    system("cls");
+    menuprincipal();
+}
+
+printf("Deseja mudar a cor do jogo? 1 ( NÃO ) 2 ( SIM ) : ");
+scanf("%i", &escolha);
+// Se o valor inserido não for 1 ou 2 irá resetar a tela.
+if(escolha >= 3 || escolha <= 0){
+    system("cls");
+    menuprincipal();
+}
+
+if(escolha == 2){
+    system("cls");
+
+printf("----------------------------------------------------------\n");
+printf("¦\t\t|@Author Eduardo José|                   ¦\n");
+printf("¦\t\t|@Version 2.0.0      |                   ¦\n");
+printf("¦\t\t|@Since 27/08/19     |                   ¦\n");
+printf("----------------------------------------------------------\n\n");
+printf("\t\t» OPÇÕES DE CORES! «\n\n");
+
+    printf("\t\t Cores : (1) = Azul \n");
+    printf("\t\t Cores : (2) = Verde \n");
+    printf("\t\t Cores : (3) = Roxo \n");
+    printf("\t\t Cores : (4) = Cinza \n");
+    printf("\t\t Cores : (5) = Amarelo \n");
+    printf("\n");
+
+    printf("Qual cor você deseja? : ");
+    scanf("%i", &cor);
+    if(audio == 1){
+        somaoescolher();
+    }
+
+    switch(cor){
+
+case 1:
+    // Muda a cor do console!
+    system("color 1");
+    break;
+case 2:
+    system("color 2");
+    break;
+case 3:
+    system("color 5");
+    break;
+case 4:
+    system("color 8");
+    break;
+case 5:
+    system("color 6");
+    break;
+default:
+    printf("Insira um valor válido!\n");
+    system("pause");
+    system("cls");
+    opcoes();
+
+    }
+
+}
+printf("\n");
+system("pause");
+system("cls");
+menuprincipal();
+}
+// Para fazer o menu principal
+void menuprincipal(){
+
+
+
+printf("----------------------------------------------------------\n");
+printf("¦\t\t|@Author Eduardo José|                   ¦\n");
+printf("¦\t\t|@Version 2.0.0      |                   ¦\n");
+printf("¦\t\t|@Since 27/08/19     |                   ¦\n");
+printf("----------------------------------------------------------\n\n");
+printf("\t\t» MENU PRINCIPAL! «\n\n");
+printf("\t\t ----------------\n");
+printf("\t\t¦1 - Jogar       ¦\n");
+printf("\t\t¦2 - Instruções  ¦\n");
+printf("\t\t¦3 - Opções      ¦\n");
+printf("\t\t¦4 - Sair        ¦\n");
+printf("\t\t --------------- \n\n");
+
+printf("Diga-me o valor: ");
+scanf("%i", &escolher);
+
+// Usando a variável escolha
+
+switch(escolher){
+case 1:
+
+    system("cls");
+    MenudoJogo();
+    if(audio == 1){
+    Somdateladojogo();
+    }
+    jogo();
+    break;
+
+case 2:
+
+    system("cls");
+    if(audio == 1){
+    somaoescolher();
+    }
+    instrucoes();
+    break;
+
+case 3:
+
+    system("cls");
+    if(audio == 1){
+    somaoescolher();
+    }
+    opcoes();
+    break;
+
+case 4:
+
+    exit(1);
+    break;
+
+default:
+
+        system("cls");
+        menuprincipal();
+}
+}
+
+
+// Textos que irão aparecer no menu do jogo
+void MenudoJogo(){
+
+printf("----------------------------------------------------------\n");
+printf("¦\t\t|@Author Eduardo José|                   ¦\n");
+printf("¦\t\t|@Version 2.0.0      |                   ¦\n");
+printf("¦\t\t|@Since 27/08/19     |                   ¦\n");
+printf("----------------------------------------------------------\n\n");
+printf("\t\t» JOGO DA ADIVINHAÇÃO! «\n\n");
+
+
+}
+
+// Mecânica do jogo
+void jogo(){
+srand(time(NULL));
+numerosorteado = rand() % 9 + 1;
+
+// Enquanto eu não acertar meu número irei continuar executando essa função
+while(numerodousuario != numerosorteado){
+
+// Saída de dados do meu retângulo
+printf("\t\t---------------------\n");
+printf("\t\t[ %c %c %c %c %c %c %c %c %c ]\n",numeros[0],numeros[1],numeros[2],numeros[3],numeros[4],numeros[5]
+,numeros[6],numeros[7],numeros[8]);
+printf("\t\t---------------------\n");
+printf("\n");
+
+printf("CHANCES:[%i] \n", chances);
+printf("Me diga seu número: ");
+scanf("%i", &numerodousuario);
+
+
+/* A partir desse amontoado de códigos, posso ver se um usuário já utilizou o mesmo dado.
+*  Se ele já utilizou aquele número, irá aparecer uma mensagem de erro, pois isso é
+*  contra as regras do jogo.
+*/
+if(numerodousuario != 0){ // Essa linha específica serve para resolver um bug, que sempre retorna um valor zero!
+if(numerodousuario == usou1 || numerodousuario == usou2 || numerodousuario == usou3 || numerodousuario == usou4
+   || numerodousuario == usou5 || numerodousuario == usou6 || numerodousuario == usou7 || numerodousuario == usou8
+   || numerodousuario == usou9 || numerodousuario == usou10 )
+   {
+    // Emite um som se o valor inserido for repetido e o audio for igual a 1
+    if(audio == 1){
+         Beep(1000,500);
+    }
+
+    printf("\nVocê já digitou %i, não pode digitar novamente!",numerodousuario);
+    printf("\n\nDICA: Fique atento a tabela acima!\n\n");
+    system("pause");
+    exit(1);
+
+}
+}
+
+/* Essa verificação para cada número digitado irá alterar o valor do index da minha matriz " numeros " para um
+*  "x" visualmente comunicando que aquele número não pode ser mais utilizado.
+*/
+   switch(numerodousuario){
+
+case 1:
+
+    numeros[0] = numeros[9];
+    usou1 = 1;
+    system("cls");
+    MenudoJogo();
+    break;
+case 2:
+
+    numeros[1] = numeros[10];
+    usou2 = 2;
+    system("cls");
+    MenudoJogo();
+    break;
+case 3:
+
+    numeros[2] = numeros[11];
+    usou3 = 3;
+    system("cls");
+    MenudoJogo();
+    break;
+case 4:
+
+    numeros[3] = numeros[12];
+    usou4 = 4;
+    system("cls");
+    MenudoJogo();
+    break;
+case 5:
+
+    numeros[4] = numeros[13];
+    usou5 = 5;
+    system("cls");
+    MenudoJogo();
+    break;
+case 6:
+
+    numeros[5] = numeros[14];
+    usou6 = 6;
+    system("cls");
+    MenudoJogo();
+    break;
+case 7:
+
+    numeros[6] = numeros[15];
+    usou7 = 7;
+    system("cls");
+    MenudoJogo();
+    break;
+case 8:
+
+    numeros[7] = numeros[16];
+    usou8 = 8;
+    system("cls");
+    MenudoJogo();
+    break;
+case 9:
+
+    numeros[8] = numeros[17];
+    usou9 = 9;
+    system("cls");
+    MenudoJogo();
+    break;
+case 10:
+    numeros[9] = numeros[18];
+    usou10 = 10;
+    system("cls");
+   MenudoJogo();
+    break;
+
+default:
+
+    printf("\nVocê só pode digitar números de 1 a 9!");
+    printf("\n\nDICA: Fique atento a tabela acima!\n\n");
+    system("pause");
+    exit(1);
+
+
+
+}
+//Emite um Som ao errar
+if(audio == 1){
+MessageBeep(MB_ICONSTOP);
+}
+chances--;
+
+if(chances == 0 && numerodousuario != numerosorteado){
+
+system("cls");
+MenudoJogo();
+printf("\nSuas chances acabaram! O número sorteado era = [%i]\n",numerosorteado);
+printf("\nBoa sorte da próxima vez ;) !\n\n");
+system("pause");
+break;
+}
+}
+
+// Se o usuário acertar o número irá aparecer uma mensagem e irá voltar para o MenudoJogo!
+if (numerodousuario == numerosorteado){
+
+system("cls");
+MenudoJogo();
+
+// Emite um som ao acertar
+system("pause\n");
+if(audio == 1){
+MessageBeep(MB_ICONINFORMATION);
+}
+// Irá servir para a minha variável chance nunca pare em 0 no final da execução
+if(chances == 3){
+    chances = 2;
+}
+
+printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n");
+printf("Você acertou, Parabéns!\n");
+printf("\nCom um total de [%i] chances você adivinhou o número = [%i]\n", chances+1, numerosorteado); // Chances +1 serve para quando minha execução terminar ele adicione +1
+printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n");
+system("pause");
+
+}
+
+}
+int main()
+{
+    // Set o meu programa com a linguagem nativa, assim posso usar acentuações e outras coisas
+    // e para isso eu incluir a biblioteca <locale.h>
+    setlocale(LC_ALL, "Portuguese");
+
+    menuprincipal();
+
+    return 0;
+
+}
