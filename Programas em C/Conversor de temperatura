@@ -1,0 +1,80 @@
+#include <stdio.h>
+
+/**
+*@Author Eduardo José
+*@Version 1.0.0
+*@Since 14/10/19
+*/
+//Função recursiva
+int main(){
+
+
+    float r1 = 0,r2 = 0,v = 0;
+    int j;
+    
+    printf("\n[0] == Celsius | [1] ==  Kelvin | [2] == Fahrenheit\n\n");
+    printf("Diga-me a temperatura que deseja converter: ");
+    scanf("%f", &r1);
+    printf("Para qual temperatura? : ");
+    scanf("%f", &r2);
+    
+    if(r1 > 2 || r1 < 0 || r2 > 2 || r2 < 0 || r1 == r2){
+    
+        return 0;
+    }
+    printf("Entre com o valor: ");
+    scanf("%f",&v);
+
+
+    if(r1 == 0 && r2 == 1 ){
+    
+        system("cls");
+        printf("\nA temperatura em Celsius [%.3f] convertida para Kelvin == [%.3f]\n",v, v+273.15);
+
+    }
+    else if(r1 == 0 & r2 == 2){
+    
+        system("cls");
+        printf("\nA temperatura em Celsius [%.3f] convertida para Fahrenheit == [%.3f]\n",v, (v*9/5) + 32);
+    }
+    else if(r1 == 1 && r2 == 0){
+    
+        system("cls");
+        printf("\nA temperatura em Kelvin [%.3f] convertida para Celsius == [%.3f]\n",v, v-273.15);
+    }
+
+    else if(r1 == 1 && r2 == 2){
+    
+        system("cls");
+        printf("\nA temperatura em Kelvin [%.3f] convertida para Fahrenheit == [%.3f]\n",v, (v - 273.15) * 9/5 + 32);
+    }
+
+    else if(r1 == 2 && r2 == 0){
+    
+        system("cls");
+        printf("\nA temperatura em Fahrenheit [%.3f] convertida para Celsius == [%.3f]\n",v, (v - 32) * 5/9 );
+    }
+
+    else if(r1 == 2 && r2 == 1){
+    
+        system("cls");
+        printf("\nA temperatura em Fahrenheit [%.3f] convertida para Kelvin == [%.3f]\n",v, (v - 32) * 5/9 + 273.15 );
+    }
+
+    printf("\n\n Converter novamente? : [0] == S | [1] == N: ");
+    scanf("%i", &j);
+
+    switch(j){
+    
+    case 0:
+        system("cls");
+        main();
+        break;
+    case 1:
+        return 0;
+    default:
+        return 0;
+    }
+
+    return 0;
+}
