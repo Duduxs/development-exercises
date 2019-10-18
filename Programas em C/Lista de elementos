@@ -1,0 +1,141 @@
+#include <stdio.h>
+
+#define TAMFILA 10
+
+/**
+*@Author Eduardo José
+*@Version 1.0.0
+*@Since 18/10/19
+*/
+
+
+//File ( Queue )
+
+int fila[TAMFILA] = {0,0,0,0,0,0,0,0,0,0};
+int head = 0; // Próximo a ser atendido
+int tail = 0; // Último da fila
+
+
+void lista_elementos(){
+
+
+    printf("\n========FILA ATUAL=========\n");
+    for(int i = 0 ; i < TAMFILA ; i++){
+
+        printf("-");
+        printf("|%d|", fila[i]);
+        printf("-");
+    }
+    printf("\nHead: %d\n", head);
+    printf("Tail: %d\n", tail);
+    printf("\n\n");
+
+}
+// Inserindo elementos na fila
+void enqueue(){
+
+    int val;
+    if(tail < TAMFILA){
+
+        printf("Informe o elemento para adiconar na fila: ");
+        scanf("%d", &val);
+        fila[tail] = val;
+        tail+=1;
+        lista_elementos();
+    }
+    else{
+
+        printf("A fila esta cheia...\n");
+    }
+
+}
+
+void dequeue(){
+
+
+    if(head < tail){
+
+        fila[head] = 0;
+        head+=1;
+        lista_elementos();
+
+    }
+    else{
+
+        printf("A fila esta vazia...\n");
+    }
+}
+
+
+void clear(){
+
+
+    for(int i = 0 ; i < TAMFILA; i++){
+
+        fila[i] = 0;
+    }
+
+    head = 0;
+    tail = 0;
+
+
+
+}
+
+
+int main(){
+
+
+    int opcao = 0;
+    do{
+
+
+
+        printf("Selecione a opcao:    \n\n");
+        printf("[1] Inserir [Enqueue] \n");
+        printf("[2] Remover [Dequeue] \n");
+        printf("[3] Listar  [Queue]   \n");
+        printf("[4] Limpar  [Queue]   \n");
+        printf("[5] Sair \n");
+        printf("Opcao: ");
+        scanf("%d", &opcao);
+
+        switch(opcao){
+
+
+        case 1:
+            system("cls");
+            enqueue();
+            break;
+
+        case 2:
+            system("cls");
+            dequeue();
+            break;
+            
+        case 3:
+            system("cls");
+            lista_elementos();
+            break;
+            
+        case 4:
+            system("cls");
+            clear();
+            break;
+            
+        case 5:
+            break;
+            
+        default:
+            printf("Selecione uma opcao valida.... ");
+            
+        }
+    }
+    while(opcao!= 5);
+
+
+
+
+
+    return 0;
+}
