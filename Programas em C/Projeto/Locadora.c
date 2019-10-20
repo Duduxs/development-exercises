@@ -44,22 +44,12 @@ void f_cadastrar_filme(){
 
     }
 }
-void f_editar_filmes(){
-
-
-
-}
-
-
 
 int main(){
 
 setlocale(LC_ALL,"Portuguese"); // Permite acentos e outras regras da língua portuguesa em strings.
 
 f_cadastrar_filme();
-
-
-
 
 return 0;
 }
