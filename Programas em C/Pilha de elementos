@@ -1,0 +1,123 @@
+#include <stdio.h>
+
+/**
+*@author Eduardo Jose
+*@Version 1.0.0
+*@Since 19/10/19
+*/
+
+
+#define TAM_STACK 10
+
+int stack[TAM_STACK] = {0,0,0,0,0,0,0,0,0,0};
+int top = 0;
+
+
+void show(){
+
+    printf("n========== YOUR STACK ============\n");
+    for(int i = 0 ; i < TAM_STACK ; i++){
+    
+
+        printf("-");
+        printf("|%d|",stack[i]);
+        printf("-");
+
+    }
+    printf("\nTop: %d", top);
+    printf("\n\n");
+
+}
+
+void push(){
+
+
+    int number;
+    printf("Say the element: ");
+    scanf("%d", &number);
+
+    if(top < TAM_STACK){
+    
+
+        stack[top] = number;
+        top+=1;
+        show();
+    }
+    else{
+    
+        printf("Full Stack...\n");
+    }
+}
+
+void pop(){
+
+
+    if(top >= 0){
+    
+        stack[top-1] = 0;
+        top-=1;
+        show();
+    }
+    else{
+    
+        printf("Empty Stack...\n");
+    }
+}
+
+void clear(){
+
+
+    for(int i = 0 ; i < TAM_STACK ; i++){
+    
+        stack[i] = 0;
+    }
+    top = 0;
+
+}
+
+int main(){
+
+
+    int choose = 0;
+
+    while(choose != 5){
+    
+        printf("Choose the option: \n");
+        printf("[1] - Add element \n");
+        printf("[2] - Remove element \n");
+        printf("[3] - Show the Stack \n");
+        printf("[4] - Clear the Stack \n");
+        printf("[5] - Exit \n");
+        printf("Say the number: ");
+        scanf("%d", &choose);
+
+        switch(choose){
+        
+
+        case 1:
+            system("cls");
+            push();
+            break;
+        case 2:
+            system("cls");
+            pop();
+            break;
+        case 3:
+            system("cls");
+            show();
+            break;
+        case 4:
+            system("cls");
+            clear();
+            break;
+        case 5:
+            break;
+        default:
+            system("cls");
+            printf("Say a valid number... \n");
+
+        }
+
+    }
+    return 0;
+}
