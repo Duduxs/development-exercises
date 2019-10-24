@@ -1,0 +1,39 @@
+#include <stdio.h>
+#define qtd 12
+/**
+@author Eduardo José
+@version 1.0.0
+@since 24/10/19
+*/
+
+
+int main(){
+
+
+    char bicho[15][15] = {"pintinho","galinha","galo","peru","capote","gato","cachorro","cabra","bode","vaca","boi","moca","viado"};
+    char voz[15][15] = {"piu","co","cocoroco","gulu glu","to fraco", "miau", "au au", "meee", "beee", "moon", "muuh", "oh!", "aiai"};
+    int b, Animal_Atual, eoPintinho, contador = 0;
+
+    for(b = 0 ; b <=qtd ; b++){
+    
+        printf("La em casa tinha um(a) %s, La em casa tinha um %s \n",bicho[b],bicho[b]);
+
+        for(Animal_Atual = contador; Animal_Atual > 0; Animal_Atual--){
+        
+
+            if(Animal_Atual == 0)
+                continue;
+
+            printf("E o(a) %s: %s \n",bicho[Animal_Atual],voz[Animal_Atual]);
+        }
+
+        for(eoPintinho = 0; eoPintinho <= qtd - contador; eoPintinho++){
+        
+            printf("E o pintinho: Piu\n");
+        }
+        printf("\n\n\n");
+        contador++;
+    }
+    return 0;
+
+}
