@@ -1,2 +1,2 @@
-# Programming exercises
+# Development exercises
 \o/
