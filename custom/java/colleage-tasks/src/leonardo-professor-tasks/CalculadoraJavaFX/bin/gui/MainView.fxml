@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#setOnMouseDragged" onMousePressed="#setOnMousePressed" prefHeight="315.0" prefWidth="181.0" style="-fx-background-color: black; -fx-opacity: 0.93; -fx-background-radius: 25; -fx-padding: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainViewController">
+   <children>
+      <VBox alignment="CENTER" layoutX="3.0" layoutY="117.0" onMouseDragged="#setOnMouseDragged" onMousePressed="#setOnMousePressed" prefHeight="184.0" prefWidth="181.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnSeven" mnemonicParsing="false" onAction="#onBtnSevenAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-radius: 25 0 0 0; -fx-background-color: gray;" text="7" />
+                  <Button fx:id="btnEight" mnemonicParsing="false" onAction="#onBtnEightAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="8" />
+                  <Button fx:id="btnNine" mnemonicParsing="false" onAction="#onBtnNineAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="9" />
+                  <Button fx:id="btnmult" mnemonicParsing="false" onAction="#onBtnMultAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-radius: 0 25 0 0; -fx-background-color: orange;" text="𝑥">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnFour" mnemonicParsing="false" onAction="#onBtnFourAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="4" />
+                  <Button fx:id="btnFive" mnemonicParsing="false" onAction="#onBtnFiveAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="5" />
+                  <Button fx:id="btnSix" mnemonicParsing="false" onAction="#onBtnSixAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="6" />
+                  <Button fx:id="btndiv" mnemonicParsing="false" onAction="#onBtnDivAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: orange;" text="÷" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnOne" mnemonicParsing="false" onAction="#onBtnOneAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="1" />
+                  <Button fx:id="btnTwo" mnemonicParsing="false" onAction="#onBtnTwoAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="2" />
+                  <Button fx:id="btnThree" mnemonicParsing="false" onAction="#onBtnThreeAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text="3" />
+                  <Button fx:id="btnmin" mnemonicParsing="false" onAction="#onBtnMinAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: orange;" text="-" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
+               <children>
+                  <Button fx:id="btnZero" mnemonicParsing="false" onAction="#onBtnZeroAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-radius: 0 0 0 25; -fx-background-color: gray;" text="0" />
+                  <Button fx:id="btnPoint" mnemonicParsing="false" onAction="#onBtnPointAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray;" text=",">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="btnEqual" mnemonicParsing="false" onAction="#onBtnEqualAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: gray; -fx-background-color: green;" text="=" />
+                  <Button fx:id="btnsum" mnemonicParsing="false" onAction="#onBtnSumAction" prefHeight="34.0" prefWidth="35.0" style="-fx-background-radius: 0 0 25 0; -fx-background-color: orange;" text="+" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_RIGHT" layoutX="7.0" layoutY="15.0" onMouseDragged="#setOnMouseDragged" onMousePressed="#setOnMousePressed" prefHeight="76.0" prefWidth="169.0">
+         <children>
+            <TextField fx:id="txtPanel" alignment="BOTTOM_RIGHT" mouseTransparent="true" prefHeight="76.0" prefWidth="171.0" style="-fx-background-color: black; -fx-font-size: 34px; -fx-border-color: green; -fx-opacity: 90; -fx-background-radius: 25;">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
+            </TextField>
+         </children>
+         <padding>
+            <Insets left="-3.0" />
+         </padding>
+      </VBox>
+      <Button fx:id="btnAbout" layoutX="20.0" layoutY="26.0" maxHeight="5.0" maxWidth="2.0" minHeight="12.0" minWidth="12.0" mnemonicParsing="false" onAction="#onBtnAboutAction" onMouseEntered="#setBtnAboutOnMouseEntered" onMouseExited="#setBtnAboutOnMouseExit" prefHeight="25.0" prefWidth="20.0" style="-fx-background-radius: 10; -fx-text-fill: black; -fx-background-color: blue;" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="7.0">
+         <font>
+            <Font name="System Bold" size="6.0" />
+         </font></Button>
+      <Button fx:id="btnExit" alignment="CENTER" layoutX="20.0" layoutY="26.0" maxHeight="5.0" maxWidth="2.0" minHeight="12.0" minWidth="12.0" mnemonicParsing="false" onAction="#onBtnExitAction" onMouseEntered="#setBtnExitOnMouseEntered" onMouseExited="#setBtnExitOnMouseExit" prefHeight="25.0" prefWidth="23.0" style="-fx-background-radius: 10; -fx-text-fill: black; -fx-background-color: red;" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="7.0">
+         <font>
+            <Font name="System Bold" size="6.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
