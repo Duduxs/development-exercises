@@ -1,2 +1,2 @@
-# Programacao
-Treinos de programação
+# Programming exercises
+\o/
