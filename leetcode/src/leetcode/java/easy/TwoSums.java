@@ -9,21 +9,16 @@ public class TwoSums {
     public static int[] twoSum(int[] nums, int target) {
 
         List<Integer> indexes = new ArrayList<>();
-        List<Integer> numsList = Arrays.stream(nums).boxed().collect(Collectors.toList());
-        boolean indexesGotten = false;
+        List<Integer> numList = Arrays.stream(nums).boxed().collect(Collectors.toList());
 
-        for (int i = 0; i < numsList.size(); i++) {
+        outerloop:
+        for (int i = 0; i < numList.size(); i++) {
+            for (int j = i + 1; j < numList.size(); j++) {
 
-            if(indexesGotten) break;
-
-            for (int j = i+1; j < numsList.size(); j++) {
-
-                if (numsList.get(i) + numsList.get(j) == target) {
-                    indexes.add(i);
-                    indexes.add(j);
-                    indexesGotten = true;
+                if (numList.get(i) + numList.get(j) == target) {
+                    indexes.addAll(List.of(i, j));
+                    break outerloop;
                 }
-                if(indexesGotten) break;
             }
         }
 
