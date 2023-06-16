@@ -18,9 +18,10 @@ public class RotateString {
         for (var i = 0; i < s.length(); i++) {
             string.remove(0);
             string.add(s.length() - 1, s.charAt(i));
+
             StringBuilder builder = new StringBuilder(s.length());
 
-            for(Character c : string) {builder.append(c);}
+            for(Character c : string) { builder.append(c); }
 
             if (builder.toString().equals(goal)) {
                 return true;
