@@ -1,36 +1,21 @@
 package leetcode.java.easy;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MajorityElement {
 
     public static int majorityElement(int[] nums) {
-        Map<Integer, Integer> elementsToTotal = new HashMap<>();
+        Map<Integer, Integer> elementsToTotalOccurrencesFoundsInArray = new HashMap<>();
 
         for (var num : nums) {
-            if (elementsToTotal.containsKey(num)) {
-                var current = elementsToTotal.get(num) + 1;
-                elementsToTotal.remove(num);
-                elementsToTotal.put(num, current);
-            } else {
-                elementsToTotal.put(num, 1);
-            }
+            elementsToTotalOccurrencesFoundsInArray.merge(num, 1, Integer::sum);
         }
 
-        var greatestElement = 0;
-        var greatestKey = 0;
-
-        for(var map : elementsToTotal.entrySet()) {
-            if(map.getValue() > greatestElement) {
-                greatestElement = map.getValue();
-                greatestKey = map.getKey();
-            }
-        }
-
-        return greatestKey;
-
-
+        return elementsToTotalOccurrencesFoundsInArray.entrySet()
+                .stream().sorted(Comparator.comparingInt(x -> -x.getValue()))
+                .findFirst().get().getKey();
     }
 
     public static void main(String[] args) {
