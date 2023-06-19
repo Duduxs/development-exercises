@@ -1,52 +1,49 @@
 package leetcode.java.easy;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RomanToInteger {
 
     public static int romanToInt(String s) {
-        Map<Character, Integer> romanNumbers = Map.of(
-                'I', 1,
-                'V', 5,
-                'X', 10,
-                'L', 50,
-                'C', 100,
-                'D', 500,
-                'M', 1000
+        Map<String, Integer> romanNumbers = Map.ofEntries(
+                Map.entry("I", 1),
+                Map.entry("IV", 4),
+                Map.entry("V", 5),
+                Map.entry("IX", 9),
+                Map.entry("X", 10),
+                Map.entry("XL", 40),
+                Map.entry("XC", 90),
+                Map.entry("L", 50),
+                Map.entry("C", 100),
+                Map.entry("CD", 400),
+                Map.entry("CM", 900),
+                Map.entry("D", 500),
+                Map.entry("M", 1000)
         );
 
+        Queue<Character> chars = s.chars().mapToObj(c -> (char) c).collect(Collectors.toCollection(ArrayDeque::new));
 
         List<Integer> numbers = new ArrayList<>();
 
-        while (true) {
-            if(s.isEmpty()) break;
-            var currentChar = s.charAt(0);
-            var nextChar = 1 < s.length() ? s.charAt(1) : null;
+        while (!chars.isEmpty()) {
 
-            if(nextChar != null) {
-                if (currentChar == 'I' && "VX".contains(nextChar.toString())) {
-                    numbers.add(romanNumbers.get(nextChar) - romanNumbers.get(currentChar));
-                    s = s.replace(String.format("%c%c",currentChar,nextChar), "");
-                } else if(currentChar == 'X' && "LC".contains(nextChar.toString())) {
-                    numbers.add(romanNumbers.get(nextChar) - romanNumbers.get(currentChar));
-                    s = s.replace(String.format("%c%c",currentChar,nextChar), "");
-                } else if(currentChar == 'C' && "DM".contains(nextChar.toString())) {
-                    numbers.add(romanNumbers.get(nextChar) - romanNumbers.get(currentChar));
-                    s = s.replace(String.format("%c%c",currentChar,nextChar), "");
-                } else {
-                    numbers.add(romanNumbers.get(currentChar));
-                    s = s.replaceFirst(String.format("%c",currentChar),"");
-                }
-            } else {
-                numbers.add(romanNumbers.get(currentChar));
-                s = s.replaceFirst(String.format("%c",currentChar),"");
+            var currentChar = chars.poll();
+            var nextChar = chars.peek();
+
+            var romanNumber = romanNumbers.get(String.format("%c%c", currentChar, nextChar));
+
+            if (romanNumber == null) {
+                numbers.add(romanNumbers.get(String.valueOf(currentChar)));
+                continue;
             }
+
+            numbers.add(romanNumber);
+            chars.remove();
 
         }
 
-        return numbers.stream().reduce(Integer::sum).get();
+        return numbers.stream().reduce(Integer::sum).orElse(0);
 
     }
 
