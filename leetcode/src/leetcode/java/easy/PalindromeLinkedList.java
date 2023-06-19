@@ -36,8 +36,7 @@ public class PalindromeLinkedList {
             current = current.next;
         }
 
-        var valuesReversed = new ArrayList<>();
-        valuesReversed.addAll(values);
+        var valuesReversed = new ArrayList<>(values);
         Collections.reverse(valuesReversed);
 
         for(var i = 0 ; i < values.size() ; i ++) {
