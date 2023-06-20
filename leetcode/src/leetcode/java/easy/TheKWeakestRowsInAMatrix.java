@@ -1,6 +1,7 @@
 package leetcode.java.easy;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,23 +9,28 @@ public class TheKWeakestRowsInAMatrix {
 
     public static int[] kWeakestRows(int[][] mat, int k) {
 
-        Map<Integer, Integer> weakestRowsByNumberOfSoliders = new HashMap<>();
+        Map<Integer, Integer> weakestRowsByNumberOfSoldiers = new HashMap<>();
 
         for (var i = 0; i < mat.length; i++) {
-            if(Arrays.stream(mat[i]).noneMatch(c -> c == 1)) {
-                weakestRowsByNumberOfSoliders.put(i, 0);
+
+            if (Arrays.stream(mat[i]).noneMatch(c -> c == 1)) {
+                weakestRowsByNumberOfSoldiers.put(i, 0);
             }
+
             for (var j = 0; j < mat[i].length; j++) {
                 if (mat[i][j] == 1) {
-                    weakestRowsByNumberOfSoliders.merge(i, 1, Integer::sum);
+                    weakestRowsByNumberOfSoldiers.merge(i, 1, Integer::sum);
                 }
             }
         }
 
-
-        return weakestRowsByNumberOfSoliders.entrySet().stream().sorted(
-                (x, y) -> x.getValue() - y.getValue()
-        ).limit(k).map(Map.Entry::getKey).mapToInt(Integer::intValue).toArray();
+        return weakestRowsByNumberOfSoldiers.entrySet()
+                .stream()
+                .sorted(Comparator.comparingInt(Map.Entry::getValue))
+                .limit(k)
+                .map(Map.Entry::getKey)
+                .mapToInt(Integer::intValue)
+                .toArray();
     }
 
 
