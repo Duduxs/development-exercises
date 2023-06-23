@@ -12,10 +12,8 @@ public class RemoveDuplicatesFromSortedArray {
         List<Integer> uniqueNumbers = Arrays.stream(nums).boxed().collect(Collectors.toCollection(TreeSet::new)).stream().toList();
 
         for (var i = 0; i < nums.length; i++) {
-            if(i < uniqueNumbers.size()) {
+            if (i < uniqueNumbers.size()) {
                 nums[i] = uniqueNumbers.get(i);
-            } else {
-                nums[i] = 9999;
             }
         }
 
