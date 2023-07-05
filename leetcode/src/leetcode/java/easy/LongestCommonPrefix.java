@@ -19,7 +19,7 @@ public class LongestCommonPrefix {
     }
 
     public static void main(String[] args) {
-        longestCommonPrefix(new String[]{"flower", "flow", "flight"});
+        longestCommonPrefix(new String[]{"flower", "flow", "flight", "flightness"});
 
     }
 }
