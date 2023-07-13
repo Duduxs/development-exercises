@@ -6,6 +6,7 @@ public class TwoSum2 {
 
         var result = new int[2];
 
+        outerloop:
         for (var i = 0; i < numbers.length; i++) {
 
             for (var j = i + 1; j < numbers.length; j++) {
@@ -13,7 +14,7 @@ public class TwoSum2 {
                 if (numbers[i] + numbers[j] == target) {
                     result[0] = i + 1;
                     result[1] = j + 1;
-                    return result;
+                    break outerloop;
                 }
             }
         }
@@ -22,6 +23,6 @@ public class TwoSum2 {
     }
 
     public static void main(String[] args) {
-
+        twoSum(new int[]{1, 2, 3, 4, 5, 6}, 3);
     }
 }
