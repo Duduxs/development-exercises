@@ -7,18 +7,19 @@ public class isAnagram {
 
     public static boolean isAnagram(String s, String t) {
 
-        if(t.length() != s.length()) return false;
+        if (t.length() != s.length()) return false;
 
         Queue<Character> pattern = new ArrayDeque<>();
+
         for (var c : s.toCharArray()) {
             pattern.add(c);
         }
 
         for (var i = 0; i < t.length(); i++) {
-            if (pattern.contains(t.charAt(i))) {
-                pattern.remove(t.charAt(i));
-            } else return false;
+            if (!pattern.contains(t.charAt(i))) return false;
+            pattern.remove(t.charAt(i));
         }
+
         return true;
 
     }
