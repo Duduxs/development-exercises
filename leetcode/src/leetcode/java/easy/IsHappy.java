@@ -1,27 +1,28 @@
 package leetcode.java.easy;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class IsHappy {
 
     public static boolean isHappy(int n) {
         if (n < 0) return false;
 
-        var times = 0;
+        Set<Integer> computedNumbers = new HashSet<>();
 
         while (n != 1) {
-            times++;
 
             var numbers = String.valueOf(n).split("");
+
             n = 0;
+
             for (var number : numbers) {
                 var parsedNumber = Integer.valueOf(number);
                 n += parsedNumber * parsedNumber;
             }
 
-
-            if (times == 10) {
-                return false;
-            }
-
+            if (computedNumbers.contains(n)) return false;
+            else computedNumbers.add(n);
         }
 
         return true;
