@@ -1,5 +1,6 @@
 package leetcode.java.easy;
 
+
 public class SearchInsertPosition {
 
     //Binary Search BIG O(LOG N)
@@ -26,8 +27,6 @@ public class SearchInsertPosition {
         System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 2));
         System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 5));
         System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 0));
-
-
         System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 6));
     }
 }
