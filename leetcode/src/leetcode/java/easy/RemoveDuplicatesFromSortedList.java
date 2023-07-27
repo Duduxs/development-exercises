@@ -32,8 +32,6 @@ public class RemoveDuplicatesFromSortedList {
             curr = curr.next;
         }
 
-        if(sortedData.isEmpty()) return null;
-
         var main = new ListNode(sortedData.poll());
         curr = main;
 
