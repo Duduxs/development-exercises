@@ -1,19 +1,22 @@
 package leetcode.java.easy;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SingleNumber {
 
     public static int singleNumber(int[] nums) {
-        Map<Integer, Integer> numsToAppearanceTimes = new HashMap<>();
+        List<Integer> candidates = new ArrayList<>();
 
         for (var i = 0; i < nums.length; i++) {
-            numsToAppearanceTimes.merge(nums[i], 1, Integer::sum);
+            if (candidates.contains(nums[i])) {
+                candidates.remove((Integer) nums[i]);
+            } else {
+                candidates.add(nums[i]);
+            }
         }
 
-        return numsToAppearanceTimes.entrySet().stream().sorted(Map.Entry.comparingByValue()).findFirst().get().getKey();
+        return candidates.get(0);
 
     }
 
