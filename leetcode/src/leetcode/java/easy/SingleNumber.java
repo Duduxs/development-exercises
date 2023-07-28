@@ -1,22 +1,21 @@
 package leetcode.java.easy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class SingleNumber {
 
     public static int singleNumber(int[] nums) {
-        List<Integer> candidates = new ArrayList<>();
+        Set<Integer> candidates = new HashSet<>();
 
-        for (var i = 0; i < nums.length; i++) {
-            if (candidates.contains(nums[i])) {
-                candidates.remove((Integer) nums[i]);
-            } else {
-                candidates.add(nums[i]);
-            }
+        for (int num : nums) {
+            if (candidates.contains(num)) candidates.remove(num);
+            else candidates.add(num);
         }
 
-        return candidates.get(0);
+        return (Integer) candidates.toArray()[0];
 
     }
 
