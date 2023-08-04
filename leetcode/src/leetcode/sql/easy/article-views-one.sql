@@ -10,3 +10,5 @@ insert into Views (article_id, author_id, viewer_id, view_date) values ('3', '4'
 
 -- 1024ms
 select distinct author_id as id from Views where author_id = viewer_id order by id asc;
+-- 672ms
+select author_id as id from Views where author_id = viewer_id group by author_id order by id asc;
