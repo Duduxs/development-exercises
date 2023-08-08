@@ -13,3 +13,6 @@ insert into EmployeeUNI (id, unique_id) values ('90', '3')
 
 -- First Solution
 select unique_id, name from Employees es left join EmployeeUNI esu on es.id = esu.id
+
+-- Second Solution
+select unique_id, name from Employees left join EmployeeUNI using (id)
