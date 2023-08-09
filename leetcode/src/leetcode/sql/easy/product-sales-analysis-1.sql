@@ -9,5 +9,7 @@ insert into Product (product_id, product_name) values ('100', 'Nokia')
 insert into Product (product_id, product_name) values ('200', 'Apple')
 insert into Product (product_id, product_name) values ('300', 'Samsung')
 
+--First solution
 select product_name, year, price from Product inner join Sales using (product_id)
+--Second solution
 select product_name, year, price from Product p inner join Sales s on p.product_id = s.product_id
