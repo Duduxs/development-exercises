@@ -15,8 +15,17 @@ insert into Transactions (transaction_id, visit_id, amount) values ('9', '5', '2
 insert into Transactions (transaction_id, visit_id, amount) values ('12', '1', '910')
 insert into Transactions (transaction_id, visit_id, amount) values ('13', '2', '970')
 
+-- First solution
 select v.customer_id, count(*) as count_no_trans
 from Visits v
 left join Transactions t on v.visit_id = t.visit_id
 where t.visit_id is null
+group by v.customer_id;
+
+-- Second solution
+select v.customer_id, count(*) as count_no_trans
+from Visits v
+where not exists (
+  select t.visit_id from Transactions t where v.visit_id = t.visit_id
+  )
 group by v.customer_id;
