@@ -13,7 +13,6 @@ where description not like '%boring%' and id % 2 != 0
 order by rating desc;
 
 -- Second solution
-
 select id, movie, description, rating
 from cinema
 where id % 2 != 0 and description not like '%boring%'
