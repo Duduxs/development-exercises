@@ -12,7 +12,6 @@ insert into UnitsSold (product_id, purchase_date, units) values ('2', '2019-02-1
 insert into UnitsSold (product_id, purchase_date, units) values ('2', '2019-03-22', '30')
 
 -- First solution
-
 select p.product_id, round(sum(p.price * us.units) / sum(us.units), 2) as average_price from Prices p
 inner join UnitsSold us on us.product_id = p.product_id
 and us.purchase_date between p.start_date and p.end_date
