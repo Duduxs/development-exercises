@@ -10,3 +10,9 @@ insert into Employee (id, name, department, managerId) values ('106', 'Ron', 'B'
 -- First solution
 select name from Employee e where (select count(*) >= 5 from Employee e2 where e2.managerId = e.id);
 
+-- Second solution
+
+select e2.name from Employee e 
+cross join Employee e2 on e.managerId = e2.id 
+group by e.managerId, e2.name 
+having count(*) >= 5;
