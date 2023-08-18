@@ -16,3 +16,11 @@ select e2.name from Employee e
 cross join Employee e2 on e.managerId = e2.id 
 group by e.managerId, e2.name 
 having count(*) >= 5;
+
+-- Third solution
+
+select e2.name from Employee e 
+inner join Employee e2 on e.managerId = e2.id 
+group by e.managerId, e2.name 
+having count(*) >= 5;
+
