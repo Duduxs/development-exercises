@@ -13,7 +13,11 @@ insert into Employee (employee_id, name, experience_years) values ('3', 'John', 
 insert into Employee (employee_id, name, experience_years) values ('4', 'Doe', '2')
 
 -- First solution
-
 select p.project_id, round(sum(experience_years)/count(*),2) as average_years from Project p
+inner join Employee using (employee_id)
+group by p.project_id
+
+-- Second solution
+select p.project_id, round(avg(experience_years),2) as average_years from Project p
 inner join Employee using (employee_id)
 group by p.project_id
