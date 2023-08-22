@@ -24,3 +24,9 @@ select r.contest_id, round(((count(*) / total) * 100), 2) as percentage  from Re
 cross join (select count(*) as total from Users u) as total
 group by r.contest_id, total
 order by percentage desc, r.contest_id asc;
+
+-- Second solution
+
+select r.contest_id, round((count(*) / (select count(*) as total from Users) * 100), 2) as percentage from Register r
+group by r.contest_id
+order by percentage desc, r.contest_id asc;
