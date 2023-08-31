@@ -10,3 +10,9 @@ insert into Followers (user_id, follower_id) values ('2', '1')
 select user_id, count(*) as followers_count from Followers
 group by user_id
 order by user_id asc;
+
+-- Second solution
+
+select user_id, count(*) as followers_count from Followers
+group by user_id
+order by 1 asc;
