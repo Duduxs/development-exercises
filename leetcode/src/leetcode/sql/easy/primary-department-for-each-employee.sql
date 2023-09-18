@@ -13,3 +13,8 @@ insert into Employee (employee_id, department_id, primary_flag) values ('4', '4'
 select e1.employee_id, e1.department_id from Employee e1
 where e1.primary_flag = 'Y' or (select count(department_id) = 1 from Employee where employee_id = e1.employee_id)
 group by e1.employee_id
+
+-- Second solution
+
+select e1.employee_id, e1.department_id from Employee e1
+where e1.primary_flag = 'Y' or (select count(department_id) = 1 from Employee where employee_id = e1.employee_id)
