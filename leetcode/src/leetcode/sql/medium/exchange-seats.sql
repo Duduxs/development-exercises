@@ -17,3 +17,15 @@ select
     ) as student 
 from Seat s
 order by s.id;
+
+-- Second solution
+
+select 
+    s.id,
+    (case 
+        when s.id % 2 <> 0 and s.id = (select count(*) from Seat) then s.student
+        when s.id % 2 <> 0 then (select su.student from Seat su where su.id = s.id + 1)
+        else (select su.student from Seat su where su.id = s.id - 1) end
+    ) as student
+from Seat s
+order by s.id;
