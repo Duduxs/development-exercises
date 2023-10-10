@@ -29,3 +29,16 @@ select
     ) as student
 from Seat s
 order by s.id;
+
+-- Third solution
+
+select 
+    s.id,
+    (if
+        (s.id % 2 <> 0,
+            (select su.student from Seat su where case when s.id = (select count(*) from Seat) then su.id = s.id else su.id = s.id + 1 end),
+            (select su.student from Seat su where su.id = s.id - 1)
+        )
+    ) as student
+from Seat s
+order by s.id;
