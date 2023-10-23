@@ -14,3 +14,13 @@ group by accepter_id) as sub
 group by sub.id
 order by num desc
 limit 1;
+
+-- Second solution with common table expressions
+
+with cte_users_id as (
+  select requester_id as id from RequestAccepted union all select accepter_id as id from RequestAccepted
+)
+select id, count(*) as num from cte_users_id 
+group by id
+order by num desc
+limit 1;
