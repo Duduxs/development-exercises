@@ -30,3 +30,17 @@ and (i1.lat, i1.lon) not in (
     where i2.pid != i1.pid
 ))
 select tiv_2016 from insurance_filtered_data_cte
+
+-- Third solution
+
+select round(sum(i1.tiv_2016),2) as tiv_2016 from Insurance i1
+where i1.tiv_2015 in (
+    select i2.tiv_2015 from Insurance i2
+    group by i2.tiv_2015
+    having count(*) > 1
+)
+and (i1.lat, i1.lon) in (
+    select i2.lat, i2.lon from Insurance i2
+    group by i2.lat, i2.lon
+    having count(*) = 1
+)
