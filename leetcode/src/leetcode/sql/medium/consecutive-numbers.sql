@@ -24,7 +24,7 @@ inner join Logs cn2 on cn2.id = cn1.id + 1
 inner join Logs cn3 on cn3.id = cn1.id + 2
 where cn1.num = cn2.num and cn1.num = cn3.num
 
--- Third solutin (much more faster)
+-- Third solution (much more faster)
 
 select distinct cn1.num as ConsecutiveNums from Logs cn1
 inner join Logs cn2 on cn2.id = cn1.id + 1 and cn1.num = cn2.num
