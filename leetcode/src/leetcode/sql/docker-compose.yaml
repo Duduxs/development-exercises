@@ -5,10 +5,8 @@ services:
     container_name: leetcode-mysql-db
     image: mysql
     restart: always
-    command: --init-file /data/application/init.sql
     volumes:
       - leetcode-volume:/var/lib/mysql
-      - ./init.sql:/data/application/init.sql
     ports:
       - "3306:3306"
     environment:
