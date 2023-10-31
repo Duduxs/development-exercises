@@ -13,6 +13,7 @@ insert into Customer (customer_id, name, visited_on, amount) values ('1', 'Jhon'
 insert into Customer (customer_id, name, visited_on, amount) values ('3', 'Jade', '2019-01-10', '150')
 
 -- First Solution
+
 select 
     c1.visited_on, 
     (select sum(c2.amount) from Customer c2 where c2.visited_on <= c1.visited_on and DATEDIFF(c1.visited_on, c2.visited_on) <= 6 ) as amount,
@@ -20,3 +21,14 @@ select
 from Customer c1
 group by c1.visited_on
 having date_sub(c1.visited_on, interval 6 day) in (select c2.visited_on from Customer c2)
+
+-- Second Solution
+
+select subselect.visited_on, subselect.amount, round(subselect.amount / 7, 2) as average_amount from (
+select 
+    c1.visited_on, 
+    (select sum(c2.amount) from Customer c2 where c2.visited_on <= c1.visited_on and DATEDIFF(c1.visited_on, c2.visited_on) <= 6 ) as amount
+from Customer c1
+group by c1.visited_on
+having date_sub(c1.visited_on, interval 6 day) in (select c2.visited_on from Customer c2)
+) as subselect
