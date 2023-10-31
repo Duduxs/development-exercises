@@ -32,3 +32,16 @@ from Customer c1
 group by c1.visited_on
 having date_sub(c1.visited_on, interval 6 day) in (select c2.visited_on from Customer c2)
 ) as subselect
+
+-- Third solution with CTE (Common Table Expresions)
+
+with restaurant_growth_cte as (
+select 
+    c1.visited_on, 
+    (select sum(c2.amount) from Customer c2 where c2.visited_on <= c1.visited_on and DATEDIFF(c1.visited_on, c2.visited_on) <= 6 ) as amount
+from Customer c1
+group by c1.visited_on
+having date_sub(c1.visited_on, interval 6 day) in (select c2.visited_on from Customer c2)
+)
+
+select restaurant_growth_cte.visited_on, restaurant_growth_cte.amount, round(restaurant_growth_cte.amount / 7, 2) as average_amount from restaurant_growth_cte
