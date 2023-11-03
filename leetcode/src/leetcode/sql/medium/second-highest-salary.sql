@@ -24,3 +24,7 @@ limit 2
 select
 (case when count(bsc.SecondHighestSalary) = 1 then null else min(bsc.SecondHighestSalary) end) as SecondHighestSalary 
 from biggest_salaries_cte bsc
+
+-- Third Solution
+
+select max(salary) as SecondHighestSalary from Employee where salary <> (select max(salary) from Employee)
