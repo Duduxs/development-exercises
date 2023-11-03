@@ -14,4 +14,13 @@ select
       order by salary desc
       limit 2) biggest_salaries
 
-      
+-- Second Solution
+
+with biggest_salaries_cte as (
+select distinct salary as SecondHighestSalary from Employee 
+order by salary desc
+limit 2
+)
+select
+(case when count(bsc.SecondHighestSalary) = 1 then null else min(bsc.SecondHighestSalary) end) as SecondHighestSalary 
+from biggest_salaries_cte bsc
