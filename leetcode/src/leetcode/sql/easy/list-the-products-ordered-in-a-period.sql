@@ -37,3 +37,16 @@ inner join Orders o
 group by p.product_id
 having sum(unit) >= 100
 
+-- Third Solution
+
+with filtered_orders_cte as (
+    select product_id, sum(unit) as unit 
+    from Orders
+    where year(order_date) = 2020
+    and month(order_date) = 2
+    group by product_id
+)
+
+select product_name, unit from Products, filtered_orders_cte
+where Products.product_id = filtered_orders_cte.product_id
+and unit >= 100
