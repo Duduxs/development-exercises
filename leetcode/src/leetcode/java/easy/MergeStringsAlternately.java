@@ -1,6 +1,6 @@
 package leetcode.java.easy;
 
-public class Test {
+public class MergeStringsAlternately {
 
     public String mergeAlternately(String word1, String word2) {
         var longestWord = word1.length() > word2.length() ? word1 : word2;
@@ -16,9 +16,8 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        var test = new Test();
-        System.out.println(test.mergeAlternately("ab", "pqrs"));
-
+        var mergeStringsAlternately = new MergeStringsAlternately();
+        System.out.println(mergeStringsAlternately.mergeAlternately("ab", "pqrs"));
     }
     
 }
