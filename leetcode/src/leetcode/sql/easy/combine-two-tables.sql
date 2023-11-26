@@ -13,3 +13,8 @@ select p.firstName, p.lastName, a.city, a.state
 from Person p
 left outer join Address a using (personId)
 
+-- Second Solution
+
+select p.firstName, p.lastName, a.city, a.state
+from Address a 
+right outer join Person p on a.personId = p.personId
