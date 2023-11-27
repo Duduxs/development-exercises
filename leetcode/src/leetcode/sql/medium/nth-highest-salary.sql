@@ -16,3 +16,16 @@ BEGIN
   );
 END;
 $$ LANGUAGE plpgsql;
+
+-- Second Solution
+
+CREATE OR REPLACE FUNCTION NthHighestSalary(N INT) RETURNS TABLE (Salary INT) AS $$
+BEGIN
+  RETURN QUERY (
+    select distinct sub_query.salary from (
+    select  e.salary, DENSE_RANK() over (order by e.salary desc) as salary_row from Employee e
+    ) as sub_query
+    where sub_query.salary_row = n
+  );
+END;
+$$ LANGUAGE plpgsql;
