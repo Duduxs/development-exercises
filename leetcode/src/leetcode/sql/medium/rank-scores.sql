@@ -10,3 +10,20 @@ insert into Scores (id, score) values ('6', '3.65')
 -- First Solution
 
 select score, dense_rank() over(order by score desc) as rank from Scores;
+
+-- Second Solution
+
+with score_cte as (
+    select 
+        score,
+        row_number() over(order by score desc) as ranked_score
+    from Scores
+    group by score
+    order by score desc
+)
+
+select s.score, ranked_score as rank
+from Scores s
+inner join score_cte using(score)
+order by s.score desc
+;
