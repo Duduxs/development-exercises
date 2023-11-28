@@ -27,3 +27,9 @@ from Scores s
 inner join score_cte using(score)
 order by s.score desc
 ;
+
+-- Third solution
+
+select s.score, (select count(distinct s2.score) from Scores s2 where s2.score >= s.score) as rank
+from Scores s
+order by s.score desc
