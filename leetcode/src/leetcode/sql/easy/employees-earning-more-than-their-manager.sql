@@ -9,3 +9,9 @@ insert into Employee (id, name, salary, managerId) values ('4', 'Max', '90000', 
 
 select e.name as Employee from Employee e 
 where e.salary > (select e2.salary from Employee e2 where e2.id = e.managerId)
+
+-- Second Solution
+
+select e.name as Employee from Employee e 
+inner join Employee e2 on e.managerId = e2.id
+where e.salary > e2.salary
