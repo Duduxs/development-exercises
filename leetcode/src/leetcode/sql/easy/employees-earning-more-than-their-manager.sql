@@ -15,3 +15,13 @@ where e.salary > (select e2.salary from Employee e2 where e2.id = e.managerId)
 select e.name as Employee from Employee e 
 inner join Employee e2 on e.managerId = e2.id
 where e.salary > e2.salary
+
+-- Third Solution
+
+with employee_cte as (
+select e.name as Employee from Employee e 
+inner join Employee e2 on e.managerId = e2.id
+where e.salary > e2.salary
+)
+
+select * from employee_cte
