@@ -25,3 +25,8 @@ where e.salary > e2.salary
 )
 
 select * from employee_cte
+
+-- Fourth Solution
+
+select e.name as Employee from Employee e, Employee e2 
+where e.managerId = e2.id and e.salary > e2.salary
