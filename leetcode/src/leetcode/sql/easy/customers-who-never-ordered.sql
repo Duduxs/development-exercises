@@ -13,3 +13,9 @@ insert into Orders (id, customerId) values ('2', '1')
 
 select c.name as Customers from Customers c
 where c.id not in (select customerId from Orders)
+
+-- Second Solution
+
+select c.name as Customers from Customers c
+left outer join Orders o on c.id = o.customerId
+where o.customerId is null
