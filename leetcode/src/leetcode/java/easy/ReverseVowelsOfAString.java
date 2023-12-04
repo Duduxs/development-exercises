@@ -31,10 +31,34 @@ public class ReverseVowelsOfAString {
         return newStr.toString();
     }
 
+    public static String reverseVowels2(String s) {
+
+        List<Character> acceptableVogals = List.of('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U');
+
+        var start = 0;
+        var end = s.length() - 1;
+
+        var chars = s.toCharArray();
+        while (start < end) {
+
+            if (acceptableVogals.contains(chars[start]) && acceptableVogals.contains(chars[end])) {
+                var temp = chars[start];
+                chars[start] = chars[end];
+                chars[end] = temp;
+                start++;
+                end--;
+            } else if (!acceptableVogals.contains(chars[start])) start++;
+            else if (!acceptableVogals.contains(chars[end])) end--;
+
+        }
+
+        return new String(chars);
+    }
+
     public static void main(String[] args) {
-//        System.out.println(reverseVowels("hello"));
-        System.out.println(reverseVowels("leetcode"));
-        System.out.println(reverseVowels("aA"));
+        System.out.println(reverseVowels2("hello"));
+        System.out.println(reverseVowels2("leetcode"));
+        System.out.println(reverseVowels2("aA"));
 
     }
 }
