@@ -13,11 +13,12 @@ public class ReverseVowelsOfAString {
 
         List<Character> acceptableVogals = List.of('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U');
 
-        for (Character character : s.toCharArray()) {
+        var chars = s.toCharArray();
+        for (Character character : chars) {
             if (acceptableVogals.contains(character)) foundVowels.push(character);
         }
 
-        for (Character character : s.toCharArray()) {
+        for (Character character : chars) {
 
             if (acceptableVogals.contains(character)) {
                 newStr.append(foundVowels.pop());
