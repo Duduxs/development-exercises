@@ -33,22 +33,21 @@ public class ReverseVowelsOfAString {
 
     public static String reverseVowels2(String s) {
 
-        List<Character> acceptableVogals = List.of('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U');
-
         var start = 0;
         var end = s.length() - 1;
 
         var chars = s.toCharArray();
+        String vowels = "aeiouAEIOU";
         while (start < end) {
 
-            if (acceptableVogals.contains(chars[start]) && acceptableVogals.contains(chars[end])) {
+            if (vowels.indexOf(chars[start]) != -1 && vowels.indexOf(chars[end]) != -1) {
                 var temp = chars[start];
                 chars[start] = chars[end];
                 chars[end] = temp;
                 start++;
                 end--;
-            } else if (!acceptableVogals.contains(chars[start])) start++;
-            else if (!acceptableVogals.contains(chars[end])) end--;
+            } else if (vowels.indexOf(chars[start]) == -1) start++;
+            else if (vowels.indexOf(chars[end]) == -1) end--;
 
         }
 
