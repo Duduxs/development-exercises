@@ -2,6 +2,7 @@ package leetcode.java.easy;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.List;
 
 public class ReverseVowelsOfAString {
 
@@ -10,21 +11,20 @@ public class ReverseVowelsOfAString {
         Deque<Character> foundVowels = new ArrayDeque<>();
         var newStr = new StringBuilder();
 
+        List<Character> acceptableVogals = List.of('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U');
 
         for (Character character : s.toCharArray()) {
-            var characterLowercase = Character.toLowerCase(character);
-            if (characterLowercase == 'a' || characterLowercase == 'e' || characterLowercase == 'i' || characterLowercase == 'o' || characterLowercase == 'u') {
-                foundVowels.push(character);
-            }
+            if (acceptableVogals.contains(character)) foundVowels.push(character);
         }
 
         for (Character character : s.toCharArray()) {
-            var characterLowercase = Character.toLowerCase(character);
-            if (characterLowercase == 'a' || characterLowercase == 'e' || characterLowercase == 'i' || characterLowercase == 'o' || characterLowercase == 'u') {
+
+            if (acceptableVogals.contains(character)) {
                 newStr.append(foundVowels.pop());
-            } else {
-                newStr.append(character);
+                continue;
             }
+
+            newStr.append(character);
         }
 
         return newStr.toString();
