@@ -18,3 +18,13 @@ union all
 select s.employee_id from Employees e 
 right outer join Salaries s using(employee_id)
 where e.employee_id is null) t order by 1 asc
+
+-- Second Solution
+
+select * from (select e.employee_id from Employees e 
+left outer join Salaries s using(employee_id)
+where s.employee_id is null
+union all 
+select s.employee_id from Employees e 
+right outer join Salaries s using(employee_id)
+where e.employee_id is null) t order by t.employee_id
