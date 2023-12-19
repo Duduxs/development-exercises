@@ -10,3 +10,9 @@ insert into Activity (player_id, device_id, event_date, games_played) values ('3
 
 select player_id, min(event_date) as first_login from Activity 
 group by player_id
+
+-- Second Solution
+
+select player_id, min(event_date) as first_login from Activity 
+group by player_id
+having min(event_date)
