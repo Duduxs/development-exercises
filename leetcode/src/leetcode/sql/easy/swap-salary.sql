@@ -9,3 +9,8 @@ insert into Salary (id, name, sex, salary) values ('4', 'D', 'f', '500')
 
 update Salary
 set sex = case when sex = 'f' then 'm' else 'f' end
+
+-- Second Solution
+
+update Salary
+set sex = if(sex = 'f', 'm', 'f')
