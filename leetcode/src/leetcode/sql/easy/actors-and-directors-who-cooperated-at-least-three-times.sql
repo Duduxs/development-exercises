@@ -13,3 +13,9 @@ insert into ActorDirector (actor_id, director_id, timestamp) values ('2', '1', '
 select actor_id, director_id from ActorDirector
 group by actor_id, director_id
 having count(*) >= 3
+
+-- Second Solution
+
+select actor_id, director_id from ActorDirector
+group by actor_id, director_id
+having count(timestamp) >= 3
