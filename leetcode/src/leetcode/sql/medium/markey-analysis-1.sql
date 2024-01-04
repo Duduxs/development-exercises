@@ -27,3 +27,10 @@ sum(case when o.order_date between '2019-01-01' and '2019-12-31' then 1 else 0 e
 from Users u
 left outer join Orders o on u.user_id = o.buyer_id
 group by u.user_id
+
+-- Second Solution
+
+select u.user_id as buyer_id, u.join_date, count(o.order_date) as orders_in_2019 
+from Users u
+left outer join Orders o on u.user_id = o.buyer_id and year(o.order_date) = '2019'
+group by u.user_id
