@@ -18,8 +18,18 @@ select t.id, 'Root' as type from Tree t
 where t.p_id is null
 
 -- Second Solution
+
 select id, IF(
     p_id is NULL, 
     'Root', 
     IF(id IN (select distinct p_id from Tree), 'Inner', 'Leaf')
 ) as type from Tree
+
+-- Third Solution
+
+select 
+    id, 
+    (case when p_id is null then 'Root'
+        else case when id in (select distinct p_id from Tree) then 'Inner' else 'Leaf' end
+    end) as type
+from Tree
