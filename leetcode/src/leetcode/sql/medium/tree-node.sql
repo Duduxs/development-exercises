@@ -16,3 +16,10 @@ where t.p_id is not null and t.id not in (select t2.p_id from Tree t2 where t2.p
 union all 
 select t.id, 'Root' as type from Tree t
 where t.p_id is null
+
+-- Second Solution
+select id, IF(
+    p_id is NULL, 
+    'Root', 
+    IF(id IN (select distinct p_id from Tree), 'Inner', 'Leaf')
+) as type from Tree
