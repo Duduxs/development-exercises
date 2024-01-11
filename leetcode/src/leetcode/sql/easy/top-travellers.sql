@@ -25,3 +25,11 @@ select u.name, sum(if(r.distance is null,0, r.distance)) as travelled_distance f
 left outer join Rides r on u.id = r.user_id
 group by r.user_id
 order by travelled_distance desc, u.name asc
+
+-- Second Solution
+
+select u.name, sum(ifnull(r.distance,0)) as travelled_distance from Users u
+left outer join Rides r on u.id = r.user_id
+group by r.user_id
+order by travelled_distance desc, u.name asc
+
