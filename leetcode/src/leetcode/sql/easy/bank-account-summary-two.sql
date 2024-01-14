@@ -13,4 +13,9 @@ insert into Transactions (trans_id, account, amount, transacted_on) values ('5',
 insert into Transactions (trans_id, account, amount, transacted_on) values ('6', '900003', '6000', '2020-09-07')
 insert into Transactions (trans_id, account, amount, transacted_on) values ('7', '900003', '-4000', '2020-09-11')
 
--- First Solution
+-- First Solution  
+
+select u.name, sum(t.amount) as balance from Users u
+inner join Transactions t using (account)
+group by t.account
+having sum(t.amount) > 10000
