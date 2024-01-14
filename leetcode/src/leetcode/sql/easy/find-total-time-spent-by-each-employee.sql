@@ -10,3 +10,7 @@ insert into Employees (emp_id, event_day, in_time, out_time) values ('2', '2020-
 
 select e.event_day as day, e.emp_id, sum(e.out_time - e.in_time) as total_time from Employees e
 group by e.event_day, e.emp_id
+
+-- Second Solution
+
+select event_day as day, emp_id, sum(out_time - in_time) as total_time from Employees group by 1,2
