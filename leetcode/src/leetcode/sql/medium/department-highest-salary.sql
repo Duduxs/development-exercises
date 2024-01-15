@@ -22,3 +22,10 @@ group by e.departmentId, e.name
 select d.name as Department, e.name as Employee, e.salary as Salary from Employee e
 inner join Department d on e.departmentId = d.id
 where e.salary = (select max(e2.salary) from Employee e2 where e2.departmentId = e.departmentId)
+
+-- Third Solution
+
+select d.name as Department, e.name as Employee, e.salary as Salary from Employee e
+inner join Department d on e.departmentId = d.id and (e.departmentId, e.salary) in (
+    select e2.departmentId, max (e2.salary) from Employee e2 group by e2.departmentId
+)
