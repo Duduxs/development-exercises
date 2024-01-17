@@ -19,7 +19,20 @@ select
 where s2.operation = 'Sell' 
 group by s2.stock_name
 
+
 -- Second Solution
+
+with buy_cte as (
+    select stock_name, sum(price) as buy from Stocks where operation = 'Buy' group by stock_name
+),
+sell_cte as (
+    select stock_name, sum(price) as sell from Stocks where operation = 'Sell' group by stock_name
+)
+
+select b.stock_name, (s.sell - b.buy) as capital_gain_loss from buy_cte b inner join sell_cte s using (stock_name)
+
+
+-- Third Solution
 
 select 
     stock_name, 
