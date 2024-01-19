@@ -1,4 +1,4 @@
-package leetcode.java.easy;
+package leetcode.java.medium;
 
 import java.util.*;
 
