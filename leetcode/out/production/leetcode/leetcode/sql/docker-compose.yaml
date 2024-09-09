@@ -6,10 +6,7 @@ services:
     command: --init-file /data/application/init.sql
     image: mysql
     restart: always
-<<<<<<< HEAD
     command: --init-file /data/application/init.sql
-=======
->>>>>>> 68a8872a7d022e644d8b290d18bedcd22cbb685d
     volumes:
       - ~/mysql:/var/lib/mysql
       - ./init.sql:/data/application/init.sql
