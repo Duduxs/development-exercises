@@ -1,6 +1,6 @@
 package leetcode.java.easy;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MoveZeroes {
@@ -10,7 +10,7 @@ public class MoveZeroes {
 
     public static void moveZeroes(int[] nums) {
         var zeroesQuantities = 0;
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new LinkedList<>();
 
         for (int num : nums) {
             if (num == 0) zeroesQuantities++;
