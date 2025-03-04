@@ -12,14 +12,9 @@ public class MoveZeroes {
     public static void moveZeroes(int[] nums) {
         var zeroesQuantities = 0;
         List<Integer> numbers = new ArrayList<>();
-        for(var i =0 ; i < nums.length ; i++) {
-            if(nums[i] == 0 ) zeroesQuantities++;
-        }
-
-        for(var i = 0; i <nums.length ; i++) {
-            if(nums[i] != 0){
-                numbers.add(nums[i]);
-            }
+        for (int num : nums) {
+            if (num == 0) zeroesQuantities++;
+            else numbers.add(num);
         }
 
         while(zeroesQuantities != 0) {
