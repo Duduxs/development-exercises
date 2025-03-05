@@ -15,9 +15,12 @@ public class FindTheDifferenceOfTwoArrays {
     public static List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
         final Set<Integer> nums1Set = Arrays.stream(nums1).boxed().collect(Collectors.toSet());
         final Set<Integer> nums2Set = Arrays.stream(nums2).boxed().collect(Collectors.toSet());
-        final List<List<Integer>> result = new ArrayList<>();
-        result.add(new ArrayList<>());
-        result.add(new ArrayList<>());
+        final List<List<Integer>> result = new ArrayList<>() {
+            {
+                add(new ArrayList<>());
+                add(new ArrayList<>());
+            }
+        };
 
         nums1Set.forEach(num -> {
             if (!nums2Set.contains(num)) {
