@@ -11,16 +11,26 @@ public class LongestCommonPrefix {
         System.out.println(findLongestCommonPrefix(new String[]{"a"}));
         System.out.println(findLongestCommonPrefix(new String[]{"dog", "racecar", "car"}));
         System.out.println(findLongestCommonPrefix(new String[]{"ab", "a"}));
+
+        System.out.println();
+
+        System.out.println(findLongestCommonPrefix2(new String[]{"flowers", "flow", "flight"}));
+        System.out.println(findLongestCommonPrefix2(new String[]{""}));
+        System.out.println(findLongestCommonPrefix2(new String[]{"a"}));
+        System.out.println(findLongestCommonPrefix2(new String[]{"dog", "racecar", "car"}));
+        System.out.println(findLongestCommonPrefix2(new String[]{"ab", "a"}));
     }
 
     public static String findLongestCommonPrefix(String[] strs) {
         var sb = new StringBuilder();
         Set<Character> set = new HashSet<>();
+
         var i = 0;
         var j = 0;
+
         while (true) {
             var currentStr = strs[i];
-            if(currentStr.length() == j) break;
+            if (currentStr.length() == j) break;
             var currentChar = currentStr.charAt(j);
             i++;
 
@@ -42,4 +52,38 @@ public class LongestCommonPrefix {
 
         return sb.toString();
     }
+
+    public static String findLongestCommonPrefix2(String[] strs) {
+        var sb = new StringBuilder();
+        Set<Character> set = new HashSet<>();
+
+        var i = 0;
+        var j = 0;
+
+        while (true) {
+            var currentStr = strs[i];
+            i++;
+
+            if (currentStr.length() == j) break;
+
+            char currentChar = currentStr.charAt(j);
+
+            if (!set.isEmpty() && !set.contains(currentChar)) {
+                break;
+            }
+
+            set.add(currentChar);
+
+            if (i == strs.length) {
+                sb.append(currentChar);
+                set.clear();
+
+                i = 0;
+                j++;
+            }
+        }
+
+        return sb.toString();
+    }
+
 }
