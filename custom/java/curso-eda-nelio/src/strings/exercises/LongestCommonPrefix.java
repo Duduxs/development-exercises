@@ -1,5 +1,6 @@
 package src.strings.exercises;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,14 @@ public class LongestCommonPrefix {
         System.out.println(findLongestCommonPrefix2(new String[]{"a"}));
         System.out.println(findLongestCommonPrefix2(new String[]{"dog", "racecar", "car"}));
         System.out.println(findLongestCommonPrefix2(new String[]{"ab", "a"}));
+
+        System.out.println();
+
+        System.out.println(findLongestCommonPrefix3(new String[]{"flowers", "flow", "flight"}));
+        System.out.println(findLongestCommonPrefix3(new String[]{""}));
+        System.out.println(findLongestCommonPrefix3(new String[]{"a"}));
+        System.out.println(findLongestCommonPrefix3(new String[]{"dog", "racecar", "car"}));
+        System.out.println(findLongestCommonPrefix3(new String[]{"ab", "a"}));
     }
 
     public static String findLongestCommonPrefix(String[] strs) {
@@ -86,4 +95,22 @@ public class LongestCommonPrefix {
         return sb.toString();
     }
 
+    public static String findLongestCommonPrefix3(String[] strs) {
+        var sb = new StringBuilder();
+
+        Arrays.sort(strs);
+
+        var first = strs[0];
+        var last = strs[strs.length - 1];
+        var smallestElementLength = Math.min(first.length(), last.length());
+
+        for (var i = 0; i < smallestElementLength; i++) {
+            if (first.charAt(i) != last.charAt(i)) {
+                return sb.toString();
+            }
+            sb.append(first.charAt(i));
+        }
+
+        return sb.toString();
+    }
 }
