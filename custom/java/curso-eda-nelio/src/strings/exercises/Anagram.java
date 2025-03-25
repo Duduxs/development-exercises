@@ -1,6 +1,8 @@
 package src.strings.exercises;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Anagram {
 
@@ -15,6 +17,8 @@ public class Anagram {
 
         System.out.println(isAnagram3("anagram", "nagaram"));
         System.out.println(isAnagram3("rat", "car"));
+
+        System.out.println(isAnagram4("a", "abb"));
     }
 
     public static boolean isAnagram(String s, String t) {
@@ -60,6 +64,38 @@ public class Anagram {
 
         for (var i = 0; i < count.length; i++) {
             if (count[i] != 0) return false;
+        }
+
+        return true;
+    }
+
+    public static boolean isAnagram4(String s, String t) {
+        if(s.length() != t.length()) return false;
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (var i = 0; i < s.length(); i++) {
+            var currentChar = s.charAt(i);
+            var currentEntry = map.get(currentChar);
+            if (currentEntry != null) {
+                map.put(currentChar, currentEntry + 1);
+            } else {
+                map.put(currentChar, 1);
+            }
+        }
+
+        for (var i = 0; i < t.length(); i++) {
+            var currentChar = t.charAt(i);
+            var currentEntry = map.get(currentChar);
+            if (currentEntry != null) {
+                map.put(currentChar, currentEntry - 1);
+            } else {
+                map.put(currentChar, 1);
+            }
+        }
+
+        for(var entry : map.entrySet()) {
+            if(entry.getValue() != 0) return false;
         }
 
         return true;
