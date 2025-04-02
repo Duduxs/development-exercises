@@ -2,6 +2,7 @@ package src.arrays.exercises;
 
 import java.util.Arrays;
 
+//Implement a solution only with arrays
 public class ContainsDuplicate {
 
     public static void main(String[] args) {
@@ -19,4 +20,14 @@ public class ContainsDuplicate {
 
         return false;
     }
+
+    public static boolean containsDuplicate2(int[] nums) {
+        for (var i = 0; i < nums.length; i++) {
+            for(var j = i + 1 ; j < nums.length ; j++) {
+                if(nums[i] == nums[j]) return true;
+            }
+        }
+        return false;
+    }
+
 }
