@@ -16,8 +16,7 @@ public class DuplicateZeros {
 
         for (var i = 0; i < arr.length && j < arr.length; i++) {
             if(arr[i] != 0) {
-                duplicatedZeroArray[j] = arr[i];
-                ++j;
+                duplicatedZeroArray[j++] = arr[i];
             } else {
                 j+=2;
             }
