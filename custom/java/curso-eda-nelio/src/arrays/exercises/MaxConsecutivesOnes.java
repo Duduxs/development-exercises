@@ -13,12 +13,25 @@ public class MaxConsecutivesOnes {
         for (var i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
                 qtd++;
-                if(qtd >= maxValue) {
+                if (qtd >= maxValue) {
                     maxValue = qtd;
                 }
             } else {
                 qtd = 0;
             }
+        }
+
+        return maxValue;
+    }
+
+    public static int findMaxConsecutivesOnesTwo(int[] nums) {
+        var qtd = 0;
+        var maxValue = qtd;
+
+        for (var i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) qtd++;
+            else qtd = 0;
+            if (qtd >= maxValue) maxValue = qtd;
         }
 
         return maxValue;
