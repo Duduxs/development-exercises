@@ -28,10 +28,9 @@ public class MaxConsecutivesOnes {
         var qtd = 0;
         var maxValue = qtd;
 
-        for (var i = 0; i < nums.length; i++) {
-            if (nums[i] == 1) qtd++;
-            else qtd = 0;
-            if (qtd >= maxValue) maxValue = qtd;
+        for (int num : nums) {
+            qtd = (num == 1) ? qtd + 1 : 0;
+            if (qtd > maxValue) maxValue = qtd;
         }
 
         return maxValue;
