@@ -9,6 +9,7 @@ public class Palindromo {
         System.out.println(isPalindrome("abcfba"));
     }
 
+    //1 solução abaixo
     public static boolean isPalindrome(String text) {
         var sb = new StringBuilder();
         isPalindrome(text, text.length() - 1, sb);
@@ -16,7 +17,7 @@ public class Palindromo {
     }
 
     public static boolean isPalindrome(String text, int currentPosition, StringBuilder builder) {
-        if(currentPosition < 0) {
+        if (currentPosition < 0) {
             return true;
         }
 
@@ -27,4 +28,22 @@ public class Palindromo {
 
     }
 
+    /**
+     * 2 solução abaixo
+    public static boolean isPalindrome(String text) {
+        return isPalindrome(text, text.length() - 1, 0);
+    }
+    public static boolean isPalindrome(String text, int i, int j) {
+        if (i < 0) {
+            return true;
+        }
+
+        if (text.charAt(i--) != text.charAt(j++)) {
+            return false;
+        }
+
+        return isPalindrome(text, i, j);
+
+    }
+*/
 }
