@@ -11,6 +11,7 @@ public class BuscaSequencial {
      * Se o elemento não existir na lista retorne -1.
      *
      * > > > Análise da complexidade de tempo
+     *
      * Melhor caso: O elemento procurado é o primeiro da lista -> 1 passo
      * f(n) = 1 (função constante)
      *
@@ -19,6 +20,13 @@ public class BuscaSequencial {
      *
      * Caso médio: O elemento procurado está em uma posição "qualquer" da lista -> n/2 passos
      * f(n) = n/2 (função linear)
+     *
+     * > > > Análise da complexidade do espaço
+     *
+     * Nessa análise ignoramos a memória usada nos parâmetros passados (entrada), pois só queremos saber
+     * o que o algoritmo utiliza de memória adicional, além dos parâmetros.
+     * No caso abaixo então só temos a alocação de memória para a variável (i) que não se altera em função do tamanho
+     * da entrada, portanto a complexidade é f(n) = 1 (função constante)
      */
     public static int buscaSequencial(final int[] vetor, final int elemento) {
         for (var i = 0; i < vetor.length; i++) {
