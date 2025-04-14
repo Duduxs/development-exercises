@@ -1,6 +1,6 @@
 package src.algorithms_complexity.exercises;
 
-public class BuscaSequencial {
+public class BuscaSequencialOrdemLinear {
 
     void main() {
         System.out.println(buscaSequencial(new int[]{15, 82, 79, 32, 41, 28}, 32));
