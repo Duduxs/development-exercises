@@ -4,7 +4,7 @@ public class OrdemLogaritmica {
 
     public static void main(String[] args) {
         var array = new int[]{7, 13, 20, 25, 28, 31, 35, 39, 40, 45, 46, 48, 57, 59, 63, 71};
-        //System.out.println(find(array, 39)); // 7
+        System.out.println(find(array, 39)); // 7
         System.out.println(find(array, 46)); // 10
         System.out.println(find(array, 22)); // -1
     }
