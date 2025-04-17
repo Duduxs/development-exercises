@@ -9,6 +9,19 @@ public class OrdemLogaritmica {
         System.out.println(find(array, 22)); // -1
     }
 
+    /**
+     * Função que encontra a posição de um elemento em um array ordenado de números.
+     *
+     * > > > Análise da complexidade de tempo
+     *  Usando a anotação assintótica
+     *      O(logN) => Big O - Ordem logarítmica
+     *      Θ(logN) => Theta - Ordem logarítmica
+     *      Ω(1) => Ômega - Ordem constante
+     *
+     *  > > > Análise da complexidade de espaço
+     *  Usando a anotação assintótica
+     *      O(1) => Big O - Ordem constante
+     */
     public static int find(int[] vector, int element) {
         return find(vector, element, 0, vector.length - 1);
     }
