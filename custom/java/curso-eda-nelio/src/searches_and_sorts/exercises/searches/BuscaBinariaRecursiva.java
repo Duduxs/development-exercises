@@ -1,4 +1,4 @@
-package src.searches_and_sorts.exercises;
+package src.searches_and_sorts.exercises.searches;
 
 public class BuscaBinariaRecursiva {
 
