@@ -4,10 +4,10 @@ public class BuscaBinariaIterativa {
 
     void main() {
         var arr = new int[]{-5, 0, 2, 8, 13, 16, 19, 23, 29, 34, 38};
-        System.out.println(binarySearch(arr, 34));
-        System.out.println(binarySearch(arr, 16));
-        System.out.println(binarySearch(arr, 8));
-        System.out.println(binarySearch(arr, -6));
+        System.out.println(binarySearch(arr, 34)); //9
+        System.out.println(binarySearch(arr, 16)); // 5
+        System.out.println(binarySearch(arr, 8)); // 3
+        System.out.println(binarySearch(arr, -6)); //-1
     }
 
     public static int binarySearch(int[] array, int key) {
@@ -17,9 +17,9 @@ public class BuscaBinariaIterativa {
         while (highestPosition > lowestPosition) {
             var middle = Math.round((highestPosition + lowestPosition) / 2);
 
-            if (key == array[middle]) return middle;
-            else if (key > array[middle]) lowestPosition = middle + 1;
-            else highestPosition = middle - 1;
+            if (key > array[middle]) lowestPosition = middle + 1;
+            else if (key < array[middle]) highestPosition = middle - 1;
+            else return middle;
         }
 
         return -1;
