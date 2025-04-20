@@ -14,7 +14,7 @@ public class BuscaBinariaIterativa {
         var lowestPosition = 0;
         var highestPosition = array.length - 1;
 
-        while (highestPosition >= lowestPosition) {
+        while (highestPosition > lowestPosition) {
             var middle = Math.round((highestPosition + lowestPosition) / 2);
 
             if (key == array[middle]) return middle;
