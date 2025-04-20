@@ -29,12 +29,9 @@ public class BuscaBinariaRecursiva {
 
         var middle = Math.round((highestPosition + lowestPosition) / 2);
 
-        if (key > array[middle])
-            return binarySearchTailRecursively(array, key, middle + 1, highestPosition);
-        else if (key < array[middle])
-            return binarySearchTailRecursively(array, key, lowestPosition, middle - 1);
-        else
-            return middle;
+        if (key > array[middle]) return binarySearchTailRecursively(array, key, middle + 1, highestPosition);
+        else if (key < array[middle]) return binarySearchTailRecursively(array, key, lowestPosition, middle - 1);
+        else return middle;
     }
 
 }
